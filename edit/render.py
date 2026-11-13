@@ -7,7 +7,9 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from edl import SEGMENTS, FOCUS_X, FOCUS_Y, CORRECTIONS, EVENTS
+from edl import SEGMENTS, FOCUS_X, FOCUS_Y, CORRECTIONS, EVENTS, END_HOLD
+import longjump
+from PIL import ImageFilter
 
 SRC, TRANSCRIPT, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
 FINAL = "--final" in sys.argv
@@ -34,7 +36,9 @@ for (lab, a, b, *_r) in SEGMENTS:
     n = int(round((b - a) * FPS))
     seg_frames.append((t, n))
     t += n
-TOTAL = t
+END_T0 = t / FPS
+END_N = int(round(END_HOLD * FPS))
+TOTAL = t + END_N
 DUR = TOTAL / FPS
 
 def src2out(ts):
@@ -71,7 +75,7 @@ for i, (lab, a, b, *_r) in enumerate(SEGMENTS):
     o0 = seg_start_out(i)
     ws = []
     for (txt, s, e) in words:
-        if min(e, b) - max(s, a) > 0.08:
+        if min(e, b) - max(s, a) > 0.08 and s < b - 0.12:
             s2, e2 = max(s, a), min(e, b)
             # whisper stretches the first word across leading silence: keep its tail only
             if e2 - s2 > 0.7:
@@ -213,14 +217,66 @@ def badge(d, t, t_in, t_out, txt, x, y):
         d.text((x + 14, y + 7), txt, font=f, fill=WHITE + (a,))
 
 def outro(d, t, t_in, t_out):
-    p, q = anim_in_out(t, t_in, t_out + 1, 0.4, 0.2)
-    if p <= 0: return
-    sc = ease_out_back(p)
+    p, q = anim_in_out(t, t_in, t_out, 0.4, 0.3)
+    if q <= 0: return
+    sc = ease_out_back(p) * (0.6 + 0.4 * q)
     f = font(F_XB, int(96 * max(sc, 0.05)))
     txt = "JOM MULAKAN!"
     w = text_w(txt, f)
-    d.text(((W - w) / 2, 250 - 48 * sc), txt, font=f, fill=YEL + (255,), stroke_width=6,
-           stroke_fill=(0, 0, 0, 255))
+    d.text(((W - w) / 2, 250 - 48 * sc), txt, font=f, fill=YEL + (int(255 * q),), stroke_width=6,
+           stroke_fill=(0, 0, 0, int(255 * q)))
+
+def longjump_card(d, t, t_in, t_out):
+    p, q = anim_in_out(t, t_in, t_out, 0.4, 0.3)
+    if q <= 0: return
+    a = int(255 * q)
+    bx, by, bw, bh = 806, 318, 446, 236
+    sl = (1 - ease_out_cubic(p)) * 520
+    bx += sl
+    rrect(d, (bx, by, bx + bw, by + bh), 16, (12, 34, 38, int(225 * q)))
+    rrect(d, (bx + 14, by + 12, bx + 190, by + 46), 8, YEL + (a,))
+    d.text((bx + 26, by + 17), "LOMPAT JAUH", font=font(F_XB, 21), fill=(20, 20, 20, a))
+    lt = min(t - t_in - 0.3, longjump.DURATION)
+    if lt > 0:
+        longjump.draw_longjump(d, lt, (bx + 10, by + 52, bw - 20, bh - 58), a, font(F_XB, 22))
+
+def end_sequence(d, t):
+    lt = t - END_T0
+    if lt < 0: return
+    # big animation
+    at = lt - 0.25
+    if at > 0:
+        fa = 1.0 if lt < 3.6 else max(0.0, 1 - (lt - 3.6) / 0.35)
+        if fa > 0:
+            longjump.draw_longjump(d, min(at, longjump.DURATION), (90, 110, 1100, 430), int(255 * fa), font(F_XB, 40))
+    # end card
+    ct = lt - 3.55
+    if ct > 0:
+        p1 = ease_out_back(ct / 0.45)
+        f1, f2, f3, f4 = font(F_XB, 34), font(F_XB, 92), font(F_XB, 30), font(F_SB, 20)
+        l1 = "TUGASAN 3  •  LATIHAN SISTEMATIK"
+        w1 = text_w(l1, f1) + 40
+        y = 150 + (1 - p1) * 40
+        rrect(d, ((W - w1) / 2, y, (W + w1) / 2, y + 54), 12, YEL + (255,))
+        d.text(((W - text_w(l1, f1)) / 2, y + 8), l1, font=f1, fill=(20, 20, 20, 255))
+        l2 = "LOMPAT JAUH"
+        sc2 = clamp(ease_out_back((ct - 0.12) / 0.45), 0, 1.2)
+        if sc2 > 0.02:
+            f2s = font(F_XB, max(8, int(92 * sc2)))
+            d.text(((W - text_w(l2, f2s)) / 2, y + 120 - 46 * sc2), l2, font=f2s, fill=WHITE + (255,),
+                   stroke_width=6, stroke_fill=(0, 0, 0, 255))
+        names = [("Amsyar", "Penganalisis"), ("Zarith", "Jurulatih Lapangan 1"),
+                 ("Hatim", "Jurulatih Lapangan 2")]
+        cw, gap = 300, 26
+        x = (W - (3 * cw + 2 * gap)) / 2
+        for k, (nm, rl) in enumerate(names):
+            pk = ease_out_cubic((ct - 0.35 - 0.12 * k) / 0.35)
+            if pk <= 0: continue
+            yy = 330 + (1 - pk) * 30
+            rrect(d, (x, yy, x + cw, yy + 96), 14, TEAL + (int(235 * pk),))
+            d.text((x + (cw - text_w(nm, f3)) / 2, yy + 14), nm, font=f3, fill=WHITE + (int(255 * pk),))
+            d.text((x + (cw - text_w(rl, f4)) / 2, yy + 58), rl, font=f4, fill=(210, 240, 236, int(255 * pk)))
+            x += cw + gap
 
 def hook_tag(d, t, t_in, t_out):
     p, q = anim_in_out(t, t_in, t_out, 0.35, 0.2)
@@ -244,7 +300,7 @@ def overlays(t):
     d = ImageDraw.Draw(img)
     hook_tag(d, t, E["hook_tag"], HOOK_END)
     lower_third(d, t, E["lt_amsyar"], seg_end_out(2), "Muhammad Amsyar Rasif")
-    lower_third(d, t, E["lt_zarif"], seg_end_out(3), "Muhammad Zarif Rizwan")
+    lower_third(d, t, E["lt_zarif"], seg_end_out(3), "Muhammad Zarith Ridzuan")
     lower_third(d, t, E["lt_hatim"], seg_end_out(4), "Ahmad Hatim")
     title_card(d, t, E["title_card"], seg_end_out(5))
     list_panel(d, t, "right", "3 OBJEKTIF", E["obj_header"], OBJ_END, [
@@ -254,11 +310,13 @@ def overlays(t):
     ])
     list_panel(d, t, "left", "PEMBAHAGIAN PERANAN", E["roles_header"], ROLE_END, [
         (E["role_amsyar"], "A", "Amsyar", "Penganalisis"),
-        (E["role_zarif"], "Z", "Zarif", "Jurulatih Lapangan 1"),
+        (E["role_zarif"], "Z", "Zarith", "Jurulatih Lapangan 1"),
         (E["role_hatim"], "H", "Hatim", "Jurulatih Lapangan 2"),
     ])
     badge(d, t, E["role_safety"], ROLE_END, "+ PEGAWAI KESELAMATAN", 36 + 78, 70 + 74 + 3 * 108 + 4)
-    outro(d, t, E["outro"], DUR)
+    longjump_card(d, t, E["longjump_mini"], seg_end_out(5))
+    outro(d, t, E["outro"], END_T0 + 0.3)
+    end_sequence(d, t)
     draw_caption(d, t)
     if not FINAL:
         f = font(F_B, 18)
@@ -307,12 +365,25 @@ for i, ((lab, a, b, focus, z0, z1), (f0, n)) in enumerate(zip(SEGMENTS, seg_fram
             dt = t - ft
             if -0.03 <= dt < 0.2:
                 out = Image.blend(out, Image.new("RGB", (W, H), WHITE), 0.85 * (1 - clamp(dt / 0.2)))
-        # fade out last 0.4s
-        if t > DUR - 0.4:
-            out = Image.blend(out, Image.new("RGB", (W, H), (0, 0, 0)), clamp((t - (DUR - 0.4)) / 0.4))
         enc.stdin.write(out.tobytes())
         fi += 1
+        last_base = zoom(fr, focus, z)
     print(f"seg {i+1}/{len(SEGMENTS)} {lab} done", flush=True)
+blur = last_base.filter(ImageFilter.GaussianBlur(14))
+dark = Image.blend(blur, Image.new("RGB", (W, H), (8, 28, 30)), 0.62)
+for k in range(END_N):
+    t = fi / FPS
+    lt = t - END_T0
+    m = ease_out_cubic(lt / 0.45)
+    bg = Image.blend(last_base, dark, m) if m < 1 else dark
+    base = bg.convert("RGBA")
+    base.alpha_composite(overlays(t))
+    out = base.convert("RGB")
+    if t > DUR - 0.5:
+        out = Image.blend(out, Image.new("RGB", (W, H), (0, 0, 0)), clamp((t - (DUR - 0.5)) / 0.5))
+    enc.stdin.write(out.tobytes())
+    fi += 1
+print("end sequence done", flush=True)
 enc.stdin.close(); enc.wait()
 
 # ---------------------------------------------------------------- audio
@@ -388,8 +459,29 @@ cue("whoosh (peranan panel)", whoosh(0.5), E["roles_header"] - 0.1, 0.35)
 for k in ("role_amsyar", "role_zarif", "role_hatim"):
     cue(f"pop ({k})", pop(), E[k], 0.8)
 cue("ding (pegawai keselamatan)", ding(), E["role_safety"], 0.8)
+def step():
+    n = int(0.05 * SR); x = rng.standard_normal(n).astype(np.float32)
+    y = np.convolve(x, np.ones(24) / 24, mode="same")
+    return y * np.exp(-np.arange(n) / SR * 70) * 2.2
+def thud():
+    b = boom()[: int(0.4 * SR)]
+    n = int(0.35 * SR); x = rng.standard_normal(n).astype(np.float32)
+    sand = np.convolve(x, np.ones(6) / 6, mode="same") * np.exp(-np.arange(n) / SR * 9) * 0.5
+    out = np.zeros(max(len(b), n), np.float32); out[:len(b)] += b; out[:n] += sand
+    return out
+def lj_sfx(t0, gain, tag):
+    for st in (0.12, 0.42, 0.66, 0.86, 1.03, 1.17, 1.28):
+        cue(f"step ({tag})", step(), t0 + st, gain * 0.8)
+    cue(f"whoosh takeoff ({tag})", whoosh(0.7), t0 + longjump.RUN - 0.05, gain * 0.5)
+    cue(f"thud + sand ({tag})", thud(), t0 + longjump.LAND, gain * 0.8)
+    cue(f"ding measure ({tag})", ding(), t0 + longjump.LAND + 0.7, gain * 0.7)
+lj_sfx(E["longjump_mini"] + 0.3, 0.6, "mini")
 cue("riser (outro)", riser(0.6), E["outro"] - 0.6, 0.6)
 cue("boom (JOM MULAKAN)", boom(), E["outro"], 0.8)
+cue("whoosh (end sequence)", whoosh(0.5), END_T0 - 0.1, 0.4)
+lj_sfx(END_T0 + 0.25, 1.0, "end")
+cue("whoosh (end card)", whoosh(0.5, up=False), END_T0 + 3.4, 0.45)
+cue("boom (end card)", boom(), END_T0 + 3.6, 0.7)
 
 def wr(path, x):
     x = np.clip(x, -1, 1)
@@ -404,9 +496,9 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", vid_path,
                 "-i", os.path.join(OUT, "voice.wav"), "-i", os.path.join(OUT, "sfx.wav"),
                 "-filter_complex",
                 "[1]highpass=f=90,afftdn=nf=-30,acompressor=threshold=-20dB:ratio=3:attack=5:release=120,"
-                "loudnorm=I=-16:TP=-1.5:LRA=9[v];[2]volume=0.9[s];[v][s]amix=inputs=2:normalize=0:duration=first[a]",
+                "loudnorm=I=-16:TP=-1.5:LRA=9[v];[2]volume=0.9[s];[v][s]amix=inputs=2:normalize=0:duration=longest,apad[a]",
                 "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
-                "-shortest", os.path.join(OUT, name)], check=True)
+                "-t", f"{DUR:.3f}", os.path.join(OUT, name)], check=True)
 json.dump({"duration": DUR, "segments": [[s[0], s[1], s[2], seg_start_out(i), seg_end_out(i)]
            for i, s in enumerate(SEGMENTS)], "sfx": cues,
            "events_out": {k: (round(v, 2) if v is not None else None) for k, v in E.items()}},

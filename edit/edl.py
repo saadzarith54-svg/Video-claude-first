@@ -20,8 +20,12 @@ SEGMENTS = [
     ("Objektif 3",                    49.35, 56.70, "left",  1.22, 1.27),
     ("Peranan (a)",                   58.45, 63.50, "right", 1.22, 1.25),
     ("Peranan (b)",                   63.95, 72.20, "right", 1.30, 1.34),
-    ("Outro: mari kita mulakan",      74.35, 75.90, "wide",  1.00, 1.10),
+    ("Outro: mari kita mulakan",      74.35, 76.50, "wide",  1.00, 1.10),
 ]
+
+# Raw footage has no usable ending after 76.5s (group breaks up / bloopers), so the edit
+# freezes the last frame and adds a long-jump animation + end card for this many seconds.
+END_HOLD = 5.5
 
 # Removed from source:
 #   0.00-5.10   pre-roll (setting up, silence)
@@ -29,13 +33,15 @@ SEGMENTS = [
 #   28.55-34.85 question itself is used ONCE (as hook), not repeated in the body
 #   34.85-36.05 / 56.70-58.45 / 72.20-74.35  dead air between lines
 #   63.50-63.95 pause before "Dan Zarif..."
-#   75.90-92.17 retakes ("Mari mulakan", "Amsyar tak ingat ayat", 3x "Mari kita mulakan")
+#   76.50-92.17 bloopers/retakes ("Mari mulakan", "Amsyar tak ingat ayat", 3x "Mari kita mulakan")
 
 # Caption spelling fixes for Whisper mishears
 CORRECTIONS = {
     "Jawa": "Jauh",
     "Pesaalan": "Persoalan",
     "mengenalpasti": "mengenal pasti",
+    "Zarif": "Zarith",
+    "Rizwan": "Ridzuan",
     "Uzdik": "",  # surname uncertain -> left out of captions until confirmed
     "Iaitu": "iaitu",  # capital I looks like "l" in Inter
 }
@@ -48,6 +54,7 @@ EVENTS = {
     "lt_zarif": 11.60,
     "lt_hatim": 14.20,
     "title_card": 21.00,
+    "longjump_mini": 21.60,
     "obj_header": 36.30,
     "obj_1": 38.20,
     "obj_2": 42.60,
