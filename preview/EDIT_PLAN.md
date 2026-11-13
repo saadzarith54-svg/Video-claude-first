@@ -20,7 +20,7 @@
 | 1:14 | Hatim | Baiklah, mari kita mulakan | ✅ outro "JOM MULAKAN!" |
 | 1:16.5–1:32 | – | Kumpulan bersurai, "Mari mulakan" / "Amsyar tak ingat ayat" / 3× "Mari kita mulakan" (retake) | ❌ buang |
 
-Dead air yang dipotong: 0:35–0:36, 0:57–0:58, 1:12–1:14, jeda sebelum "Dan Zarif…".
+Dead air yang dipotong: 0:35–0:36, 0:57–0:58, 1:12–1:14, jeda sebelum "Dan Zarith…".
 
 ## Struktur preview
 | Preview | Bahagian | Visual | SFX |
@@ -29,7 +29,7 @@ Dead air yang dipotong: 0:35–0:36, 0:57–0:58, 1:12–1:14, jeda sebelum "Dan
 | 0:06 | Transisi | Flash putih | boom |
 | 0:06–0:16 | Salam + perkenalan | Wide → punch-in pada setiap penceramah, lower-third nama | whoosh ×3 |
 | 0:16–0:25 | Topik | Title card "TUGASAN 3: Latihan Sistematik: Lompat Jauh" + **kad animasi lompat jauh** (lari → lompat → mendarat di pasir → "LEBIH JAUH!") | whoosh turun + ding, tapak kaki, whoosh, thud pasir |
-| 0:25–0:47 | 3 Objektif | Fokus Zarif (zoom bertukar setiap objektif), panel kanan item 1/2/3 muncul ikut ayat | whoosh + pop ×3 |
+| 0:25–0:47 | 3 Objektif | Fokus Zarith (zoom bertukar setiap objektif), panel kanan item 1/2/3 muncul ikut ayat | whoosh + pop ×3 |
 | 0:47–0:59 | Peranan | Fokus Hatim, panel kiri A/Z/H + badge "PEGAWAI KESELAMATAN" | whoosh + pop ×3 + ding |
 | 0:59–1:01 | Outro | "JOM MULAKAN!" + flash, shot kumpulan ditahan lebih lama | riser + boom |
 | 1:01–1:05 | **Animasi lompat jauh penuh skrin** | Frame terakhir di-freeze + blur, animasi besar | tapak kaki, whoosh, thud pasir, ding |
