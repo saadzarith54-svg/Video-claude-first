@@ -1,0 +1,909 @@
+[
+ {
+  "start": 4.88,
+  "end": 7.18,
+  "text": " Assalamualaikum dan salam sejahtera",
+  "words": [
+   {
+    "w": " Assalamualaikum",
+    "s": 4.88,
+    "e": 5.72
+   },
+   {
+    "w": " dan",
+    "s": 5.72,
+    "e": 6.06
+   },
+   {
+    "w": " salam",
+    "s": 6.06,
+    "e": 6.62
+   },
+   {
+    "w": " sejahtera",
+    "s": 6.62,
+    "e": 7.18
+   }
+  ]
+ },
+ {
+  "start": 7.18,
+  "end": 10.54,
+  "text": " Nama diberi Muhammad Amsyar Rasif bin Muan Zaini",
+  "words": [
+   {
+    "w": " Nama",
+    "s": 7.18,
+    "e": 7.98
+   },
+   {
+    "w": " diberi",
+    "s": 7.98,
+    "e": 8.48
+   },
+   {
+    "w": " Muhammad",
+    "s": 8.48,
+    "e": 8.74
+   },
+   {
+    "w": " Amsyar",
+    "s": 8.74,
+    "e": 9.24
+   },
+   {
+    "w": " Rasif",
+    "s": 9.24,
+    "e": 9.66
+   },
+   {
+    "w": " bin",
+    "s": 9.66,
+    "e": 9.88
+   },
+   {
+    "w": " Muan",
+    "s": 9.88,
+    "e": 10.12
+   },
+   {
+    "w": " Zaini",
+    "s": 10.12,
+    "e": 10.54
+   }
+  ]
+ },
+ {
+  "start": 10.54,
+  "end": 14.02,
+  "text": " Nama saya Muhammad Zarif Rizwan bin Muhammad Saad",
+  "words": [
+   {
+    "w": " Nama",
+    "s": 10.54,
+    "e": 11.64
+   },
+   {
+    "w": " saya",
+    "s": 11.64,
+    "e": 11.88
+   },
+   {
+    "w": " Muhammad",
+    "s": 11.88,
+    "e": 12.3
+   },
+   {
+    "w": " Zarif",
+    "s": 12.3,
+    "e": 12.76
+   },
+   {
+    "w": " Rizwan",
+    "s": 12.76,
+    "e": 13.12
+   },
+   {
+    "w": " bin",
+    "s": 13.12,
+    "e": 13.34
+   },
+   {
+    "w": " Muhammad",
+    "s": 13.34,
+    "e": 13.66
+   },
+   {
+    "w": " Saad",
+    "s": 13.66,
+    "e": 14.02
+   }
+  ]
+ },
+ {
+  "start": 14.02,
+  "end": 16.3,
+  "text": " Dan saya Ahmad Hatim bin Uzdik",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 14.02,
+    "e": 14.5
+   },
+   {
+    "w": " saya",
+    "s": 14.5,
+    "e": 14.84
+   },
+   {
+    "w": " Ahmad",
+    "s": 14.84,
+    "e": 15.32
+   },
+   {
+    "w": " Hatim",
+    "s": 15.32,
+    "e": 15.76
+   },
+   {
+    "w": " bin",
+    "s": 15.76,
+    "e": 15.88
+   },
+   {
+    "w": " Uzdik",
+    "s": 15.88,
+    "e": 16.3
+   }
+  ]
+ },
+ {
+  "start": 16.3,
+  "end": 21.8,
+  "text": " Dan pada hari ini kami bertiga akan membentangkan berkaitan tugasan tiga",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 16.3,
+    "e": 16.96
+   },
+   {
+    "w": " pada",
+    "s": 16.96,
+    "e": 17.3
+   },
+   {
+    "w": " hari",
+    "s": 17.3,
+    "e": 17.54
+   },
+   {
+    "w": " ini",
+    "s": 17.54,
+    "e": 17.84
+   },
+   {
+    "w": " kami",
+    "s": 17.84,
+    "e": 18.14
+   },
+   {
+    "w": " bertiga",
+    "s": 18.14,
+    "e": 18.84
+   },
+   {
+    "w": " akan",
+    "s": 18.84,
+    "e": 19.08
+   },
+   {
+    "w": " membentangkan",
+    "s": 19.08,
+    "e": 20.02
+   },
+   {
+    "w": " berkaitan",
+    "s": 20.02,
+    "e": 21.0
+   },
+   {
+    "w": " tugasan",
+    "s": 21.0,
+    "e": 21.42
+   },
+   {
+    "w": " tiga",
+    "s": 21.42,
+    "e": 21.8
+   }
+  ]
+ },
+ {
+  "start": 21.8,
+  "end": 25.7,
+  "text": " Iaitu latihan sistematik bagi acara Lompat Jawa",
+  "words": [
+   {
+    "w": " Iaitu",
+    "s": 21.8,
+    "e": 22.84
+   },
+   {
+    "w": " latihan",
+    "s": 22.84,
+    "e": 23.32
+   },
+   {
+    "w": " sistematik",
+    "s": 23.32,
+    "e": 24.2
+   },
+   {
+    "w": " bagi",
+    "s": 24.2,
+    "e": 24.74
+   },
+   {
+    "w": " acara",
+    "s": 24.74,
+    "e": 25.14
+   },
+   {
+    "w": " Lompat",
+    "s": 25.14,
+    "e": 25.5
+   },
+   {
+    "w": " Jawa",
+    "s": 25.5,
+    "e": 25.7
+   }
+  ]
+ },
+ {
+  "start": 25.7,
+  "end": 27.5,
+  "text": " Pesaalan kami mudah",
+  "words": [
+   {
+    "w": " Pesaalan",
+    "s": 25.7,
+    "e": 26.7
+   },
+   {
+    "w": " kami",
+    "s": 26.7,
+    "e": 26.98
+   },
+   {
+    "w": " mudah",
+    "s": 26.98,
+    "e": 27.5
+   }
+  ]
+ },
+ {
+  "start": 27.5,
+  "end": 32.06,
+  "text": " Bagaimana seseorang itu dapat melompat lebih jauh",
+  "words": [
+   {
+    "w": " Bagaimana",
+    "s": 27.5,
+    "e": 29.2
+   },
+   {
+    "w": " seseorang",
+    "s": 29.2,
+    "e": 30.02
+   },
+   {
+    "w": " itu",
+    "s": 30.02,
+    "e": 30.32
+   },
+   {
+    "w": " dapat",
+    "s": 30.32,
+    "e": 30.76
+   },
+   {
+    "w": " melompat",
+    "s": 30.76,
+    "e": 31.36
+   },
+   {
+    "w": " lebih",
+    "s": 31.36,
+    "e": 31.66
+   },
+   {
+    "w": " jauh",
+    "s": 31.66,
+    "e": 32.06
+   }
+  ]
+ },
+ {
+  "start": 32.06,
+  "end": 34.66,
+  "text": " Dan apakah latihan khusus yang diperlukan",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 32.06,
+    "e": 32.36
+   },
+   {
+    "w": " apakah",
+    "s": 32.36,
+    "e": 32.78
+   },
+   {
+    "w": " latihan",
+    "s": 32.78,
+    "e": 33.36
+   },
+   {
+    "w": " khusus",
+    "s": 33.36,
+    "e": 33.96
+   },
+   {
+    "w": " yang",
+    "s": 33.96,
+    "e": 34.14
+   },
+   {
+    "w": " diperlukan",
+    "s": 34.14,
+    "e": 34.66
+   }
+  ]
+ },
+ {
+  "start": 34.66,
+  "end": 37.68,
+  "text": " Baiklah, objektif kami ada tiga",
+  "words": [
+   {
+    "w": " Baiklah,",
+    "s": 34.66,
+    "e": 36.36
+   },
+   {
+    "w": " objektif",
+    "s": 36.4,
+    "e": 36.92
+   },
+   {
+    "w": " kami",
+    "s": 36.92,
+    "e": 37.12
+   },
+   {
+    "w": " ada",
+    "s": 37.12,
+    "e": 37.34
+   },
+   {
+    "w": " tiga",
+    "s": 37.34,
+    "e": 37.68
+   }
+  ]
+ },
+ {
+  "start": 37.68,
+  "end": 42.52,
+  "text": " Yang pertama, mengenalpasti keperluan fizikal acara Lompat Jawa",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 37.68,
+    "e": 38.16
+   },
+   {
+    "w": " pertama,",
+    "s": 38.16,
+    "e": 38.5
+   },
+   {
+    "w": " mengenalpasti",
+    "s": 38.76,
+    "e": 39.8
+   },
+   {
+    "w": " keperluan",
+    "s": 39.8,
+    "e": 40.88
+   },
+   {
+    "w": " fizikal",
+    "s": 40.88,
+    "e": 41.36
+   },
+   {
+    "w": " acara",
+    "s": 41.36,
+    "e": 41.86
+   },
+   {
+    "w": " Lompat",
+    "s": 41.86,
+    "e": 42.32
+   },
+   {
+    "w": " Jawa",
+    "s": 42.32,
+    "e": 42.52
+   }
+  ]
+ },
+ {
+  "start": 42.52,
+  "end": 47.18,
+  "text": " Yang kedua, ialah mereka bentuk satu latihan yang sistematik",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 42.52,
+    "e": 43.02
+   },
+   {
+    "w": " kedua,",
+    "s": 43.02,
+    "e": 43.58
+   },
+   {
+    "w": " ialah",
+    "s": 43.66,
+    "e": 44.18
+   },
+   {
+    "w": " mereka",
+    "s": 44.18,
+    "e": 44.8
+   },
+   {
+    "w": " bentuk",
+    "s": 44.8,
+    "e": 45.38
+   },
+   {
+    "w": " satu",
+    "s": 45.38,
+    "e": 45.64
+   },
+   {
+    "w": " latihan",
+    "s": 45.64,
+    "e": 46.14
+   },
+   {
+    "w": " yang",
+    "s": 46.14,
+    "e": 46.42
+   },
+   {
+    "w": " sistematik",
+    "s": 46.42,
+    "e": 47.18
+   }
+  ]
+ },
+ {
+  "start": 47.18,
+  "end": 49.36,
+  "text": " Yang memperbaiki teknik",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 47.18,
+    "e": 47.8
+   },
+   {
+    "w": " memperbaiki",
+    "s": 47.8,
+    "e": 48.6
+   },
+   {
+    "w": " teknik",
+    "s": 48.6,
+    "e": 49.36
+   }
+  ]
+ },
+ {
+  "start": 49.36,
+  "end": 53.0,
+  "text": " Yang ketiga, memastikan satu kaedah latihan itu",
+  "words": [
+   {
+    "w": " Yang",
+    "s": 49.36,
+    "e": 49.8
+   },
+   {
+    "w": " ketiga,",
+    "s": 49.8,
+    "e": 50.2
+   },
+   {
+    "w": " memastikan",
+    "s": 50.38,
+    "e": 51.06
+   },
+   {
+    "w": " satu",
+    "s": 51.06,
+    "e": 51.58
+   },
+   {
+    "w": " kaedah",
+    "s": 51.58,
+    "e": 52.44
+   },
+   {
+    "w": " latihan",
+    "s": 52.44,
+    "e": 52.72
+   },
+   {
+    "w": " itu",
+    "s": 52.72,
+    "e": 53.0
+   }
+  ]
+ },
+ {
+  "start": 53.0,
+  "end": 56.8,
+  "text": " Sesuai mengikut tahap pelajar dan selamat untuk dilaksanakan",
+  "words": [
+   {
+    "w": " Sesuai",
+    "s": 53.0,
+    "e": 53.86
+   },
+   {
+    "w": " mengikut",
+    "s": 53.86,
+    "e": 54.3
+   },
+   {
+    "w": " tahap",
+    "s": 54.3,
+    "e": 54.66
+   },
+   {
+    "w": " pelajar",
+    "s": 54.66,
+    "e": 55.06
+   },
+   {
+    "w": " dan",
+    "s": 55.06,
+    "e": 55.34
+   },
+   {
+    "w": " selamat",
+    "s": 55.34,
+    "e": 55.76
+   },
+   {
+    "w": " untuk",
+    "s": 55.76,
+    "e": 56.0
+   },
+   {
+    "w": " dilaksanakan",
+    "s": 56.0,
+    "e": 56.8
+   }
+  ]
+ },
+ {
+  "start": 56.8,
+  "end": 60.68,
+  "text": " Untuk itu, kami telah membahagikan peranan",
+  "words": [
+   {
+    "w": " Untuk",
+    "s": 56.8,
+    "e": 58.58
+   },
+   {
+    "w": " itu,",
+    "s": 58.58,
+    "e": 58.78
+   },
+   {
+    "w": " kami",
+    "s": 58.86,
+    "e": 59.32
+   },
+   {
+    "w": " telah",
+    "s": 59.32,
+    "e": 59.68
+   },
+   {
+    "w": " membahagikan",
+    "s": 59.68,
+    "e": 60.26
+   },
+   {
+    "w": " peranan",
+    "s": 60.26,
+    "e": 60.68
+   }
+  ]
+ },
+ {
+  "start": 60.68,
+  "end": 63.4,
+  "text": " Iaitu Amsyar sebagai penganalisis",
+  "words": [
+   {
+    "w": " Iaitu",
+    "s": 60.68,
+    "e": 61.58
+   },
+   {
+    "w": " Amsyar",
+    "s": 61.58,
+    "e": 62.12
+   },
+   {
+    "w": " sebagai",
+    "s": 62.12,
+    "e": 62.56
+   },
+   {
+    "w": " penganalisis",
+    "s": 62.56,
+    "e": 63.4
+   }
+  ]
+ },
+ {
+  "start": 63.4,
+  "end": 66.96,
+  "text": " Dan Zarif sebagai jurulatih lapangan pertama",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 63.4,
+    "e": 64.28
+   },
+   {
+    "w": " Zarif",
+    "s": 64.28,
+    "e": 65.06
+   },
+   {
+    "w": " sebagai",
+    "s": 65.06,
+    "e": 65.28
+   },
+   {
+    "w": " jurulatih",
+    "s": 65.28,
+    "e": 66.26
+   },
+   {
+    "w": " lapangan",
+    "s": 66.26,
+    "e": 66.7
+   },
+   {
+    "w": " pertama",
+    "s": 66.7,
+    "e": 66.96
+   }
+  ]
+ },
+ {
+  "start": 66.96,
+  "end": 70.46,
+  "text": " Dan saya merupakan jurulatih lapangan kedua",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 66.96,
+    "e": 67.74
+   },
+   {
+    "w": " saya",
+    "s": 67.74,
+    "e": 68.1
+   },
+   {
+    "w": " merupakan",
+    "s": 68.1,
+    "e": 69.0
+   },
+   {
+    "w": " jurulatih",
+    "s": 69.0,
+    "e": 69.64
+   },
+   {
+    "w": " lapangan",
+    "s": 69.64,
+    "e": 70.06
+   },
+   {
+    "w": " kedua",
+    "s": 70.06,
+    "e": 70.46
+   }
+  ]
+ },
+ {
+  "start": 70.46,
+  "end": 72.06,
+  "text": " Serta pegawai keselamatan",
+  "words": [
+   {
+    "w": " Serta",
+    "s": 70.46,
+    "e": 70.82
+   },
+   {
+    "w": " pegawai",
+    "s": 70.82,
+    "e": 71.5
+   },
+   {
+    "w": " keselamatan",
+    "s": 71.5,
+    "e": 72.06
+   }
+  ]
+ },
+ {
+  "start": 73.56,
+  "end": 75.64,
+  "text": " Baiklah, mari kita mulakan",
+  "words": [
+   {
+    "w": " Baiklah,",
+    "s": 73.56,
+    "e": 74.48
+   },
+   {
+    "w": " mari",
+    "s": 74.58,
+    "e": 74.92
+   },
+   {
+    "w": " kita",
+    "s": 74.92,
+    "e": 75.24
+   },
+   {
+    "w": " mulakan",
+    "s": 75.24,
+    "e": 75.64
+   }
+  ]
+ },
+ {
+  "start": 78.6,
+  "end": 79.98,
+  "text": " Mari mulakan",
+  "words": [
+   {
+    "w": " Mari",
+    "s": 78.6,
+    "e": 79.52
+   },
+   {
+    "w": " mulakan",
+    "s": 79.52,
+    "e": 79.98
+   }
+  ]
+ },
+ {
+  "start": 79.98,
+  "end": 81.6,
+  "text": " Amsyar tak ingat ayat",
+  "words": [
+   {
+    "w": " Amsyar",
+    "s": 79.98,
+    "e": 80.84
+   },
+   {
+    "w": " tak",
+    "s": 80.84,
+    "e": 80.98
+   },
+   {
+    "w": " ingat",
+    "s": 80.98,
+    "e": 81.32
+   },
+   {
+    "w": " ayat",
+    "s": 81.32,
+    "e": 81.6
+   }
+  ]
+ },
+ {
+  "start": 81.6,
+  "end": 84.98,
+  "text": " Mari kita mulakan",
+  "words": [
+   {
+    "w": " Mari",
+    "s": 81.6,
+    "e": 82.1
+   },
+   {
+    "w": " kita",
+    "s": 82.1,
+    "e": 83.9
+   },
+   {
+    "w": " mulakan",
+    "s": 83.9,
+    "e": 84.98
+   }
+  ]
+ },
+ {
+  "start": 87.7,
+  "end": 89.38,
+  "text": " Mari kita mulakan",
+  "words": [
+   {
+    "w": " Mari",
+    "s": 87.7,
+    "e": 88.62
+   },
+   {
+    "w": " kita",
+    "s": 88.62,
+    "e": 88.86
+   },
+   {
+    "w": " mulakan",
+    "s": 88.86,
+    "e": 89.38
+   }
+  ]
+ },
+ {
+  "start": 89.38,
+  "end": 91.36,
+  "text": " Dengan memanggil acara ini",
+  "words": [
+   {
+    "w": " Dengan",
+    "s": 89.38,
+    "e": 90.42
+   },
+   {
+    "w": " memanggil",
+    "s": 90.42,
+    "e": 90.88
+   },
+   {
+    "w": " acara",
+    "s": 90.88,
+    "e": 91.18
+   },
+   {
+    "w": " ini",
+    "s": 91.18,
+    "e": 91.36
+   }
+  ]
+ }
+]
