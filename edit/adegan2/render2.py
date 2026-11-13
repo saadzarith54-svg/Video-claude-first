@@ -64,6 +64,7 @@ for c0, c1 in L.CUTS:
         if c0 - a > 0.15: nr.append((a, c0))
         if b - c1 > 0.15: nr.append((c1, b))
     regions = nr
+regions.append(L.TAIL)
 
 # ------------------------------------------------------------------ jump programs -> frame lists
 def program_frames(prog):
@@ -101,6 +102,8 @@ def s2o(ts):
     return END_T0
 
 E = {k: s2o(v) for k, v in L.EV.items()}
+SPEECH_END = s2o(L.TALK_OUT)
+CARD_T0 = END_T0 - L.CARD_LEAD
 BR = []
 for key, at, prog in L.BROLL:
     fr = program_frames(prog)
@@ -260,7 +263,7 @@ def broll_graphics(d, key, fr_kind, ft, t):
         if ft > 0.35: label(d, (600, 520), "KAKI KE HADAPAN", a)
 
 def needs_panel(d, t):
-    p, q = inout(t, E["need_header"], END_T0 + 0.3, 0.45, 0.3)
+    p, q = inout(t, E["need_header"], SPEECH_END + 0.2, 0.45, 0.3)
     if q <= 0: return
     a = int(255 * q); pw = 430; x0 = 36 - (1 - eo(p)) * (pw + 60); y0 = 60
     fH, fN, fT, fS = font(F_XB, 28), font(F_XB, 28), font(F_B, 27), font(F_SB, 21)
@@ -312,12 +315,12 @@ def slowmo_badge(d, t, on):
     d.text((W - 138, 66), txt, font=f, fill=WHITE + (255,))
 
 def end_card(d, t):
-    lt = t - END_T0
+    lt = t - CARD_T0
     if lt < 0: return
     p = eob(lt / 0.45)
     f1, f2 = font(F_XB, 32), font(F_XB, 80)
     l1 = "SETERUSNYA"; w1 = tw(l1, f1) + 36
-    y = 250 + (1 - p) * 40
+    y = 70 + (1 - p) * 40
     rrect(d, ((W - w1) / 2, y, (W + w1) / 2, y + 50), 10, YEL + (255,))
     d.text(((W - tw(l1, f1)) / 2, y + 7), l1, font=f1, fill=INK + (255,))
     if lt > 0.15:
@@ -336,14 +339,14 @@ def overlays(t, broll_state=None):
     chip(d, t, E["p4_chip"], E["p4_safe"], "Badan seimbang", 36, 170)
     chip(d, t, E["p4_safe"], E["phase_out"], "Mendarat dengan selamat", 36, 170, RED)
     needs_panel(d, t)
-    chip(d, t, E["closing_chip"], END_T0, "Setiap latihan = sekurang-kurangnya 1 keperluan", 490, 520, RED)
+    chip(d, t, E["closing_chip"], SPEECH_END + 0.2, "Setiap latihan = sekurang-kurangnya 1 keperluan", 490, 520, RED)
     if broll_state:
         key, kind, ft = broll_state
         broll_graphics(d, key, kind, ft, t)
     slowmo_badge(d, t, broll_state is not None and broll_state[1] in ("slow", "freeze") or
                  (t < HOOK_DUR and broll_state is None and False))
     end_card(d, t)
-    if t < END_T0: caption(d, t)
+    if t < SPEECH_END + 0.3: caption(d, t)
     if not FINAL: d.text((W - 110, 14), "PREVIEW", font=font(F_B, 18), fill=(255, 255, 255, 140))
     return img
 
@@ -412,7 +415,7 @@ br_at = {}
 for key, o0, o1, fr in BR:
     for k in range(o1 - o0): br_at[o0 + k] = (key, fr[k])
 for ri, ((a, b), (f0, n)) in enumerate(zip(regions, seg_frames)):
-    z0 = L.TALK_ZOOMS[ri % 2]
+    z0 = 1.0 if (a, b) == L.TAIL else L.TALK_ZOOMS[ri % 2]
     for k, fr in enumerate(read_frames(TALK, a, n)):
         t = fi / FPS
         if fi in br_at:
@@ -525,8 +528,8 @@ cue("whoosh (5 keperluan panel)", whoosh(0.5), E["need_header"] - 0.1, 0.35)
 for k in ("need_1", "need_2", "need_3", "need_4", "need_5"): cue(f"pop ({k})", pop(), E[k], 0.8)
 cue("ding (kelenturan pinggul)", ding(), E["need_5b"], 0.5)
 cue("ding (closing chip)", ding(), E["closing_chip"], 0.6)
-cue("whoosh (end card)", whoosh(0.5), END_T0 - 0.1, 0.4)
-cue("boom (SETERUSNYA)", boom(), END_T0 + 0.2, 0.7)
+cue("whoosh (end card)", whoosh(0.5), CARD_T0 - 0.1, 0.4)
+cue("boom (SETERUSNYA)", boom(), CARD_T0 + 0.2, 0.7)
 
 def wr(path, x):
     x = np.clip(x, -1, 1)

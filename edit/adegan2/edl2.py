@@ -7,8 +7,11 @@ Slow-mo uses a motion-interpolated 120fps copy of the jump clip (rate 0.25 = 4x 
 
 # talk range kept (everything else removed):
 #   0.00-5.58  "Okey, kita kembali lagi berdasarkan segmen tadi"  (weak opener -> replaced by hook)
-#   93.30-end  silence / end of take
-TALK_IN, TALK_OUT = 5.58, 93.30
+#   93.45-95.25  pause, looking at phone
+TALK_IN, TALK_OUT = 5.58, 93.45
+# raw ending kept as-is (silent): hand gesture toward the pit + walk-off. The pause at 93.45-95.25
+# (looking down at phone) is removed.
+TAIL = (95.25, 97.20)
 # hard cuts inside speech: stumble "kuasa letupan, letusan kaki" -> "kuasa letusan kaki"
 CUTS = [(74.45, 75.42)]
 GAP_MIN = 0.35      # pauses longer than this are tightened
@@ -35,7 +38,8 @@ BROLL = [
                            ("play", 4.27, 4.60, 0.30, 1.70)]),
 ]
 
-END_HOLD = 2.4
+END_HOLD = 1.6
+CARD_LEAD = 1.1   # end card appears this long before the raw footage ends (over the walk-off)
 
 # Caption fixes. Whisper hallucinated "Dan yang ketiga, kekuatan kaki / Dan yang ketiga," at 83.4-84.9;
 # a re-check of that chunk gives "...keseimbangan serta kelenturan pinggul".

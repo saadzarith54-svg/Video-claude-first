@@ -1,6 +1,6 @@
 # ADEGAN 2: pelan edit (PREVIEW)
 
-**Sumber:** klip cakap Amsyar (1:37) + klip lompatan (0:06) → **Preview:** 1:24. Final belum di-render.
+**Sumber:** klip cakap Amsyar (1:37) + klip lompatan (0:06) → **Preview:** 1:25. Final belum di-render.
 
 ## Transkrip (klip cakap)
 | Masa | Ayat | Status |
@@ -13,8 +13,9 @@
 | 0:49 | Yang ketiga, iaitu fasa penerbangan | ✅ + B-roll layangan slow-mo 4× |
 | 0:52 | Yang keempat, fasa pendaratan. Badan perlulah seimbang supaya kaki dapat dihulurkan ke hadapan, dan pelajar dapat mendarat dengan selamat | ✅ + B-roll pendaratan slow-mo + freeze "KAKI KE HADAPAN" + chip |
 | 1:04 | Daripada empat fasa ini, kami kenal pasti lima keperluan fizikal utama: kelajuan, kuasa ~~letupan~~ letusan kaki, kekuatan kaki, koordinasi, keseimbangan serta kelenturan pinggul | ✅ + panel 5 keperluan · ❌ "letupan" (tersasul) dibuang |
-| 1:26 | Setiap latihan yang kami tunjukkan nanti akan melatih kurang-kurangnya satu daripadanya | ✅ + chip + end card "SETERUSNYA: LATIHAN →" |
-| 1:33–1:37 | (senyap) | ❌ buang |
+| 1:26 | Setiap latihan yang kami tunjukkan nanti akan melatih kurang-kurangnya satu daripadanya | ✅ + chip |
+| 1:33–1:35 | (jeda, tengok telefon) | ❌ buang |
+| 1:35–1:37 | Lambai tangan ke arah kotak pasir & berjalan keluar (ending asal) | ✅ dikekalkan + end card "SETERUSNYA: LATIHAN →" muncul atasnya |
 
 Semua jeda lebih 0.35s dipendekkan ke 0.22s (26 potongan). Zoom bertukar 1.0×/1.15× pada setiap potongan supaya jump cut tak ketara.
 
@@ -25,7 +26,7 @@ Semua jeda lebih 0.35s dipendekkan ke 0.22s (26 potongan). Zoom bertukar 1.0×/1
 | 0:05–0:25 | Amsyar + panel 4 fasa | whoosh, pop ×4 |
 | 0:21–0:56 | Fasa 1–4: tag merah "FASA x/4", pil progres, B-roll slow-mo setiap fasa | whoosh, swoop slow-mo, hit freeze, tick anak panah, thud, ding |
 | 0:56–1:21 | Panel 5 keperluan fizikal | whoosh, pop ×5, ding |
-| 1:21–1:24 | End card "SETERUSNYA: LATIHAN →" | whoosh + boom |
+| 1:22–1:25 | Ending asal (lambai + jalan keluar), end card masuk atas footage, kemudian blur & fade | whoosh + boom |
 
 Slow-mo: klip lompatan di-interpolate ke 120fps (motion interpolation), jadi slow-mo 4× masih licin. Crop ikut pelompat sebab dalam footage asal dia kecil.
 
