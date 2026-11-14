@@ -41,6 +41,32 @@ ITEMS = [
     ("4.12", "4.12", 0.00, 13.85, 1.0, "demo", 1.00),
 ]
 TRACKED = {"4.5", "4.6", "4.7", "4.8", "4.9", "4.10", "4.11"}
+
+# user request: repeat each warm-up demo 2-3x (different framing each pass), then the slow-mo replay
+PASSES = {"4.5": 2, "4.6": 3, "4.7": 3, "4.8": 2, "4.9": 2, "4.10": 3, "4.11": 3, "4.12": 3}
+PASS_ZOOM = {1: None, 2: 1.00, 3: 1.65}   # None = item's own zoom; pass 2 wide; pass 3 tight (tracked clips)
+_items = []
+for it in ITEMS:
+    key, clip, a, b, r, kind, z = it
+    _items.append(it)
+    if kind == "demo" and key in PASSES:
+        for n in range(2, PASSES[key] + 1):
+            zz = PASS_ZOOM[n] if clip in TRACKED else 1.0
+            _items.append((f"{key}#{n}", clip, a, b, r, kind, zz))
+# move each replay after the last pass of its demo (it already follows the first pass in ITEMS order)
+ITEMS = []
+for it in _items:
+    ITEMS.append(it)
+_rep = [it for it in ITEMS if it[0].startswith("r")]
+ITEMS = [it for it in ITEMS if not it[0].startswith("r")]
+for rp in _rep:
+    base = rp[0][1:]
+    last = max(i for i, it in enumerate(ITEMS) if it[0] == base or it[0].startswith(base + "#"))
+    ITEMS.insert(last + 1, rp)
+
+def base_key(key):
+    k = key[1:] if key.startswith("r") else key
+    return k.split("#")[0]
 RECAP_HOLD = 11.0
 END_HOLD = 3.0
 

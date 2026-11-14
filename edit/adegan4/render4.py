@@ -285,11 +285,13 @@ def intensity_gauge(d, t, t_in, t_out, x0=None, y0=150, auto=None):
     lab = f"{int(round(lvl * 100))}%"; d.text((x0 + 16, y0 + 88), f"{lab}  ·  sasaran 60–70%", font=font(F_B, 19), fill=WHITE + (a,))
 
 def demo_overlay(d, t, key):
-    base = key[1:] if key.startswith("r") else key
+    base = L.base_key(key)
     title, dose, goal, cue = L.DEMO[base]
+    npass = L.PASSES.get(base, 1); cur = int(key.split("#")[1]) if "#" in key else 1
     t0, t1 = ostart(key), oend(key)
     idx = list(L.DEMO).index(base) + 1
-    small = ("SLOW-MO REPLAY" if key.startswith("r") else f"DEMONSTRASI {idx}/8 · {L.DEMO_GROUP[base]}")
+    small = ("SLOW-MO REPLAY" if key.startswith("r") else f"DEMONSTRASI {idx}/8 · {L.DEMO_GROUP[base]}" +
+             (f" · ULANGAN {cur}/{npass}" if npass > 1 else ""))
     tag(d, t, t0 + 0.15, t1 - 0.05, small, title, col=(RED if not key.startswith("r") else TEAL))
     # info chips bottom-left
     p, q = inout(t, t0 + 0.6, t1 - 0.05, 0.35, 0.25)
@@ -304,7 +306,7 @@ def demo_overlay(d, t, key):
         if q2 > 0:
             a = int(255 * q2); f = font(F_XB, 22); w = tw(cue, f) + 40; x = W - 32 - w + (1 - eo(p2)) * (w + 60)
             rrect(d, (x, 150, x + w, 196), 23, YEL + (a,)); d.text((x + 20, 160), cue, font=f, fill=INK + (a,))
-    if base == "4.5" and not key.startswith("r"):
+    if base == "4.5" and not key.startswith("r") and cur == 1:
         p3, q3 = inout(t, t0 + 2.0, t1 - 0.05, 0.35, 0.25)
         if q3 > 0:
             a = int(255 * q3); f = font(F_B, 19); txt = "Dalam latihan sebenar: 2 minit berterusan"; w = tw(txt, f) + 30
@@ -379,7 +381,7 @@ def overlays(t, key):
                     if pi > 0.9: check(d, x + 18, y + 15, 24, YEL + (a,)); d.text((x + 54, y + 11), txt2, font=f2, fill=WHITE + (a,))
         comp_panel(d, t)
         for sk, num, txt, dur in L.SEC_BANNERS: banner(d, t, E[sk], dur, num, txt)
-    if key and (key in L.DEMO or (key.startswith("r") and key[1:] in L.DEMO)): demo_overlay(d, t, key)
+    if key and not key.startswith("hook") and L.base_key(key) in L.DEMO: demo_overlay(d, t, key)
     recap(d, t); end_card(d, t)
     caption(d, t)
     if not FINAL: d.text((W - 100, 696), "PREVIEW", font=font(F_B, 16), fill=(255, 255, 255, 140))

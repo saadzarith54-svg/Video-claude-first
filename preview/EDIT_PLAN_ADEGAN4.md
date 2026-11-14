@@ -1,6 +1,6 @@
 # ADEGAN 4: pelan edit (PREVIEW)
 
-**Sumber:** 12 klip (4.1 → 4.12), jumlah raw ±6:35 → **Preview:** ±7:15 (lebih panjang dari raw). Final belum di-render.
+**Sumber:** 12 klip (4.1 → 4.12), jumlah raw ±6:35 → **Preview:** ±11:00 (lebih panjang dari raw). Final belum di-render.
 
 Susunan **ikut betul-betul** urutan 4.1 → 4.12. Klip raw dikekalkan penuh. Yang dibuang hanya:
 - 4.4 0:00–0:09: sembang setup sebelum mula ("…rangan lah. Tak ada pun.")
@@ -12,6 +12,7 @@ Jeda panjang dalam 4.4 **tidak dipotong**. Ia diisi dengan banner "KOMPONEN x/4"
 | Tambahan | Masa |
 |---|---|
 | **Hook teaser** (pecutan, high knees slow-mo, A-skip slow-mo, lunges, gembur pasir) + tajuk "PEMANASAN BADAN · Kurangkan risiko kecederaan" | ±10 s |
+| **Demo pemanasan diulang 2–3×** (permintaan): ulangan 1 crop ikut pelaku, ulangan 2 wide, ulangan 3 zoom dekat. Label "ULANGAN x/3". 3× untuk ayunan kaki, lunges, B-skip, high knees, pecutan; 2× untuk jogging, regangan pinggul, A-skip | ±4:00 |
 | **Slow-mo replay** (interpolasi 120fps, crop ikut pelaku) selepas ayunan kaki, lunges, A-skip, B-skip, high knees | ±27 s |
 | **Ringkasan pemanasan** (jadual: komponen, contoh, dos, tujuan) | 11 s |
 | End card "SETERUSNYA: LATIHAN UTAMA →" | 3 s |
