@@ -223,6 +223,8 @@ for it in L.SEQ:
     k = it[1]; ws = []
     for txt, s0, e0 in words(k):
         if any(d0 <= s0 <= d1 for d0, d1 in L.DROP.get(k, [])): continue
+        ov = [nt for (ts, nt) in getattr(L, "OVERRIDE", {}).get(k, []) if abs(ts - s0) < 0.05]
+        if ov: txt = ov[0]
         bare = txt.strip(",.?!")
         if bare in L.CORRECTIONS: txt = txt.replace(bare, L.CORRECTIONS[bare]) if L.CORRECTIONS[bare] else ""
         if not txt or txt.lower().startswith("terima"): continue
@@ -339,11 +341,11 @@ def demo_gfx(d, t, seg):
     if seg["extra"].get("line"):
         pi = eo((t - t0 - 1.0) / 0.8)
         if pi > 0:   # straight body line guide for plank (approx head -> heel in the tight crop)
-            x0_, y0_, x1_, y1_ = 300, 452, 300 + (980 - 300) * pi, 452 + (470 - 452) * pi
+            x0_, y0_, x1_, y1_ = 370, 372, 370 + (920 - 370) * pi, 372 + (398 - 372) * pi
             d.line([(x0_, y0_), (x1_, y1_)], fill=YEL + (a,), width=6)
             if pi > 0.95:
                 f = font(F_XB, 24); txt = "LURUS: KEPALA → TUMIT"
-                d.text((640 - tw(txt, f) / 2, 390), txt, font=f, fill=YEL + (a,), stroke_width=4, stroke_fill=(0, 0, 0, a))
+                d.text((640 - tw(txt, f) / 2, 250), txt, font=f, fill=YEL + (a,), stroke_width=4, stroke_fill=(0, 0, 0, a))
 
 def zone_bar(d, t, t_in, t_out):
     p, q = inout(t, t_in, t_out, 0.4, 0.3)
@@ -458,54 +460,71 @@ def overlays(t, seg):
 
 # ------------------------------------------------------------------ video
 vid = os.path.join(OUT, "video.mp4")
-enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
-                        "-c:v", "libx264", "-preset", "medium", "-crf", "18" if FINAL else "26", "-pix_fmt", "yuv420p", vid], stdin=subprocess.PIPE)
-FLASH = [s["f0"] / FPS for s in SEGS if s["kind"] in ("card",) or (s["kind"] == "demo" and s["pass"] == 1)] + [HOOK_N / FPS]
-fi = 0
-def emit(img, seg):
-    global fi
-    t = fi / FPS; base = img.convert("RGBA")
-    if seg["kind"] == "talk": draw_pip(base, t)
-    base.alpha_composite(overlays(t, seg)); out = base.convert("RGB")
-    for ft in FLASH:
-        dt = t - ft
-        if -0.02 <= dt < 0.13: out = Image.blend(out, Image.new("RGB", (W, H), WHITE), 0.65 * (1 - clamp(dt / 0.13)))
-    if t > DUR - 0.5: out = Image.blend(out, Image.new("RGB", (W, H), (0, 0, 0)), clamp((t - (DUR - 0.5)) / 0.5))
-    enc.stdin.write(out.tobytes()); fi += 1
+AUDIO_ONLY = "--audio-only" in sys.argv and os.path.exists(vid)
+if "--patch" in sys.argv and os.path.exists(vid):
+    os.replace(vid, os.path.join(OUT, "video_prev.mp4"))
+if not AUDIO_ONLY:
+    enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
+                            "-c:v", "libx264", "-preset", "medium", "-crf", "18" if FINAL else "26", "-pix_fmt", "yuv420p", vid], stdin=subprocess.PIPE)
+    FLASH = [s["f0"] / FPS for s in SEGS if s["kind"] in ("card",) or (s["kind"] == "demo" and s["pass"] == 1)] + [HOOK_N / FPS]
+    fi = 0
+    def emit(img, seg):
+        global fi
+        t = fi / FPS; base = img.convert("RGBA")
+        if seg["kind"] == "talk": draw_pip(base, t)
+        base.alpha_composite(overlays(t, seg)); out = base.convert("RGB")
+        for ft in FLASH:
+            dt = t - ft
+            if -0.02 <= dt < 0.13: out = Image.blend(out, Image.new("RGB", (W, H), WHITE), 0.65 * (1 - clamp(dt / 0.13)))
+        if t > DUR - 0.5: out = Image.blend(out, Image.new("RGB", (W, H), (0, 0, 0)), clamp((t - (DUR - 0.5)) / 0.5))
+        enc.stdin.write(out.tobytes()); fi += 1
 
-def bg_from(k, t):
-    fr = next(read_raw(src(k), t, 1)); im = Image.fromarray(fr).filter(ImageFilter.GaussianBlur(16))
-    return Image.blend(im, Image.new("RGB", (W, H), (6, 22, 26)), 0.6)
+    def bg_from(k, t):
+        fr = next(read_raw(src(k), t, 1)); im = Image.fromarray(fr).filter(ImageFilter.GaussianBlur(16))
+        return Image.blend(im, Image.new("RGB", (W, H), (6, 22, 26)), 0.6)
 
-last = None
-for si, seg in enumerate(SEGS):
-    k = seg["kind"]
-    if k == "hook":
-        lk, la, lb, lr = L.HOOK_LEFT; rk, ra, rb, rr = L.HOOK_RIGHT
-        lf = list(shot_frames(lk, la, lb, lr)); rf = list(shot_frames(rk, ra, rb, rr))
-        for j in range(HOOK_N):
-            lt, lfr = lf[min(j, len(lf) - 1)]; rt, rfr = rf[min(j, len(rf) - 1)]
-            canvas = Image.new("RGB", (W, H))
-            canvas.paste(demo_view(lk, lt, {}, (W // 2, H), lfr), (0, 0)); canvas.paste(demo_view(rk, rt, {}, (W // 2, H), rfr), (W // 2, 0))
-            last = canvas; emit(canvas, seg)
-        dark = Image.blend(last.filter(ImageFilter.GaussianBlur(14)), Image.new("RGB", (W, H), (6, 22, 26)), 0.55)
-        for j in range(seg["n"] - HOOK_N): emit(Image.blend(last, dark, eo(j / 8)), seg)
-    elif k == "card":
-        nxt = next(s for s in SEGS[si + 1:] if s["kind"] in ("talk", "demo"))
-        bg = bg_from(nxt["clip"], nxt["a"] + 0.5)
-        for j in range(seg["n"]): emit(bg, seg)
-    elif k == "talk":
-        z0 = 1.0 if seg["ri"] % 2 == 0 else 1.12
-        for j, fr in enumerate(read_raw(src(seg["clip"]), seg["a"], seg["n"])):
-            img = crop(fr, 640, 330, z0 + 0.015 * j / max(seg["n"] - 1, 1)); last = img; emit(img, seg)
-    elif k == "demo":
-        for ct, fr in shot_frames(seg["clip"], seg["a"], seg["b"], seg["rate"]):
-            img = demo_view(seg["clip"], ct, seg["extra"], (W, H), fr); last = img; emit(img, seg)
-    elif k in ("recap", "end"):
-        if k == "recap": bgr = Image.blend(last.filter(ImageFilter.GaussianBlur(16)), Image.new("RGB", (W, H), (6, 22, 26)), 0.62)
-        for j in range(seg["n"]): emit(bgr, seg)
-    print("done", si, k, seg.get("clip", ""), flush=True)
-enc.stdin.close(); enc.wait()
+    last = None
+    PATCH = sys.argv[sys.argv.index("--patch") + 1].split(",") if "--patch" in sys.argv else None
+    old_rd = None
+    if PATCH:
+        old_rd = subprocess.Popen(["ffmpeg", "-v", "error", "-i", os.path.join(OUT, "video_prev.mp4"), "-f", "rawvideo",
+                                   "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
+    def selected(seg):
+        return seg["kind"] in ("talk", "demo") and (seg["clip"] in PATCH or f'{seg["clip"]}:{seg.get("pass")}' in PATCH)
+    for si, seg in enumerate(SEGS):
+        k = seg["kind"]
+        if PATCH:
+            bufs = [old_rd.stdout.read(W * H * 3) for _ in range(seg["n"])]
+            if not selected(seg):
+                for b_ in bufs: enc.stdin.write(b_); fi += 1
+                if seg["kind"] in ("talk", "demo"): last = Image.frombytes("RGB", (W, H), bufs[-1])
+                continue
+        if k == "hook":
+            lk, la, lb, lr = L.HOOK_LEFT; rk, ra, rb, rr = L.HOOK_RIGHT
+            lf = list(shot_frames(lk, la, lb, lr)); rf = list(shot_frames(rk, ra, rb, rr))
+            for j in range(HOOK_N):
+                lt, lfr = lf[min(j, len(lf) - 1)]; rt, rfr = rf[min(j, len(rf) - 1)]
+                canvas = Image.new("RGB", (W, H))
+                canvas.paste(demo_view(lk, lt, {}, (W // 2, H), lfr), (0, 0)); canvas.paste(demo_view(rk, rt, {}, (W // 2, H), rfr), (W // 2, 0))
+                last = canvas; emit(canvas, seg)
+            dark = Image.blend(last.filter(ImageFilter.GaussianBlur(14)), Image.new("RGB", (W, H), (6, 22, 26)), 0.55)
+            for j in range(seg["n"] - HOOK_N): emit(Image.blend(last, dark, eo(j / 8)), seg)
+        elif k == "card":
+            nxt = next(s for s in SEGS[si + 1:] if s["kind"] in ("talk", "demo"))
+            bg = bg_from(nxt["clip"], nxt["a"] + 0.5)
+            for j in range(seg["n"]): emit(bg, seg)
+        elif k == "talk":
+            z0 = 1.0 if seg["ri"] % 2 == 0 else 1.12
+            for j, fr in enumerate(read_raw(src(seg["clip"]), seg["a"], seg["n"])):
+                img = crop(fr, 640, 330, z0 + 0.015 * j / max(seg["n"] - 1, 1)); last = img; emit(img, seg)
+        elif k == "demo":
+            for ct, fr in shot_frames(seg["clip"], seg["a"], seg["b"], seg["rate"]):
+                img = demo_view(seg["clip"], ct, seg["extra"], (W, H), fr); last = img; emit(img, seg)
+        elif k in ("recap", "end"):
+            if k == "recap": bgr = Image.blend(last.filter(ImageFilter.GaussianBlur(16)), Image.new("RGB", (W, H), (6, 22, 26)), 0.62)
+            for j in range(seg["n"]): emit(bgr, seg)
+        print("done", si, k, seg.get("clip", ""), flush=True)
+    enc.stdin.close(); enc.wait()
 
 # ------------------------------------------------------------------ audio
 NS = int(DUR * SR); voice = np.zeros((NS + SR, 2), np.float32)
@@ -535,7 +554,8 @@ def onepole(x, fc):
     for i in range(len(x)): acc += al * (x[i] - acc); y[i] = acc
     return y
 # original music loop, 104 BPM, Dm - Bb - F - C
-BPM = 104; BEAT = 60 / BPM; BAR = 4 * BEAT; NL = int(4 * BAR * SR); loop = np.zeros(NL, np.float32); T = np.arange(NL) / SR
+BPM = 104; BEAT = 60 / BPM; BAR = 4 * BEAT; NL = int(4 * BAR * SR); T = np.arange(NL) / SR
+loop = np.zeros(NL + SR, np.float32)   # 1 s headroom so notes near the loop end never overflow
 CH = [(73.42, [293.66, 349.23, 440.0]), (116.54, [233.08, 293.66, 349.23]), (87.31, [349.23, 440.0, 523.25]), (65.41, [261.63, 329.63, 392.0])]
 for bi, (root, triad) in enumerate(CH):
     s, e = int(bi * BAR * SR), int((bi + 1) * BAR * SR); tb = T[s:e] - bi * BAR
@@ -556,6 +576,7 @@ for bt in range(16):
 for h8 in range(32):
     hs = int(h8 * BEAT / 2 * SR); hl = int(0.05 * SR); nz = rng.standard_normal(hl).astype(np.float32)
     loop[hs:hs + hl] += np.diff(nz, prepend=0) * np.exp(-np.arange(hl) / SR * 80) * (0.08 if h8 % 2 else 0.05)
+tail = loop[NL:].copy(); loop = loop[:NL]; loop[:len(tail)] += tail   # wrap the overflow to the loop start
 loop /= np.max(np.abs(loop)) + 1e-6
 music = np.tile(loop, NS // NL + 2)[:NS] * 0.55 * mg
 

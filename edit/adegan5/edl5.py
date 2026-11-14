@@ -45,7 +45,7 @@ SEQ = [
     ("demo", "5.4b", 0.0, 12.0, 1.0, "LUNGES", 1, {}),
     ("demo", "5.4b", 1.2, 9.6, 0.6, "LUNGES", 2, {}),
     ("demo", "5.4c", 0.0, 28.5, 1.0, "PLANK", 1, {}),
-    ("demo", "5.4c", 4.0, 16.0, 1.0, "PLANK", 2, {"fixed": (600, 395, 2.1), "line": True}),
+    ("demo", "5.4c", 4.0, 16.0, 1.0, "PLANK", 2, {"fixed": (590, 520, 2.1), "line": True}),
     ("card", 5, "LOMPAT KOTAK KE PASIR", "Keseimbangan & koordinasi"),
     ("talk", "5.5d", 0.8, 37.6, "Hatim", []),
     ("talk", "5.5e", 1.6, 28.6, "Hatim", []),                   # 30.8-32.2 repeat "Kekalkan ketinggian..." removed
@@ -136,7 +136,11 @@ PANELS = {
 
 # caption fixes (verified chunk by chunk)
 CORRECTIONS = {"pencucian": "pecutan", "sejarah": "sejarak", "beransur-ansur": "berangsur-angsur", "Bersenang": "bersilih",
-               "nerima": "", "maka": "palang", "baka": "palang", "gerudukan": "", "ketindian": "ketinggian", "Lakuan": "Lakukan",
+               "nerima": "", "gerudukan": "", "ketindian": "ketinggian", "Lakuan": "Lakukan",
                "Lihat": "", "tumik": "tumit", "berantisiti": "berintensiti", "tinggal": "hingga", "Ujuannya": "Tujuannya",
                "poster": "postur", "mensimulasikan": "mensimulasikan"}
-DROP = {"5.1b": [(91.0, 95.0)], "5.4a": [(89.55, 94.25)], "5.5e": [(30.5, 33.0)], "5.2a": [(93.0, 96.0)]}
+DROP = {"5.1b": [(91.0, 95.0)], "5.4a": [(89.55, 94.25)], "5.5e": [(30.5, 33.0)],
+        # 5.2a unclear words ("maka/baka dan besi", "gerudukan maka dan") left out of captions
+        "5.2a": [(93.0, 96.0), (14.25, 15.2), (61.1, 63.45), (74.85, 76.10)]}
+# per-word caption overrides by clip-time: clip -> [(word start, new text)]
+OVERRIDE = {"5.2a": [(12.22, "halangan."), (29.28, "halangan")]}
