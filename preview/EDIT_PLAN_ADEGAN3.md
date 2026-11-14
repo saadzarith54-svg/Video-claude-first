@@ -9,18 +9,18 @@
 ## Transkrip
 | Masa raw | Siapa | Ayat | Status |
 |---|---|---|---|
-| 0:00–0:07 | – | (senyap / setup) | ❌ buang |
+| 0:00–0:07 | – | (bersedia) | ✅ + tajuk "PERBINCANGAN · REKA BENTUK 5 LATIHAN" |
 | 0:07 | Zarith | Baiklah, kami telah pun menyusun lima latihan mengikut urutan fasa teknik, bermula daripada pecutan sehinggalah pendaratan | ✅ + lower-third + jalur 5 latihan + "Sistematik" ✓ |
-| 0:20 | Zarith | Kami juga telah berbincang berkaitan untuk memilih… | ❌ buang (bahagian ni jadi hook) |
-| 0:26 | Zarith | **…latihan yang tidak memerlukan peralatan yang mahal. Cukuplah kita menggunakan kon, kotak rendah, tali getah dan kotak pasir** | ⭐ **dipindah ke depan = HOOK** |
+| 0:20 | Zarith | Kami juga telah berbincang berkaitan untuk memilih… | ✅ |
+| 0:26 | Zarith | **…latihan yang tidak memerlukan peralatan yang mahal. Cukuplah kita menggunakan kon, kotak rendah, tali getah dan kotak pasir** | ✅ + "TANPA PERALATAN MAHAL" + ikon peralatan + "Boleh dilaksanakan" ✓ |
 | 0:37 | Zarith | Untuk tahap keupayaan pelajar pula, kami mulakan dengan beban ringan… dinaikkan secara berangsur-angsur untuk beberapa minggu | ✅ + carta beban M1→M4 + "Sesuai tahap" ✓ |
 | 0:52 | Hatim | Set penuh dilakukan sebanyak dua kali sahaja dalam seminggu, dan sekurang-kurangnya diberikan sehari untuk waktu rehat antara sesi | ✅ + lower-third + kalendar mingguan |
 | 1:01 | Hatim | Minggu satu dan dua penguasaan teknik. Manakala minggu tiga dan empat menambahkan set ataupun jarak | ✅ + **JADUAL PARAMETER LENGKAP 5 LATIHAN** |
-| 1:16 | Zarith | Dari segi keselamatan pula, ~~dari segi keselamatan,~~ setiap latihan itu mestilah ada rehat yang cukup. Tinggi kotak dihadkan 20–30 cm sahaja, dan pelajar yang letih diminta untuk berhenti | ✅ + panel KESELAMATAN + "Selamat" ✓ · ❌ ayat berulang dibuang |
+| 1:16 | Zarith | Dari segi keselamatan pula, dari segi keselamatan, setiap latihan itu mestilah ada rehat yang cukup. Tinggi kotak dihadkan 20–30 cm sahaja, dan pelajar yang letih diminta untuk berhenti | ✅ + panel KESELAMATAN + "Selamat" ✓ (ayat berulang dikekalkan, ikut raw) |
 | 1:34 | Hatim | Sekarang kita akan ke padang untuk menyaksikan bagaimana set ini dilakukan | ✅ |
-| 1:39–1:46 | – | Bangun, ambil peralatan, keluar (ending asal) | ✅ dikekalkan pada 1.5× + end card "SETERUSNYA: DEMONSTRASI DI PADANG →" |
+| 1:39–1:46 | – | Bangun, ambil peralatan, keluar (ending asal) | ✅ dikekalkan (kelajuan biasa) + end card "SETERUSNYA: DEMONSTRASI DI PADANG →" |
 
-Semua jeda lebih 0.35s dipendekkan ke 0.22s. Zoom/framing ikut siapa yang bercakap (analisis pergerakan mulut).
+Semua jeda dikekalkan. Zoom/framing ikut siapa yang bercakap (analisis pergerakan mulut).
 
 ## Teks atas skrin (ikut skrip)
 - **Prinsip reka bentuk**: sistematik, sesuai tahap, selamat, boleh dilaksanakan. Widget kecil di atas kanan, setiap prinsip dapat ✓ bila disebut.
