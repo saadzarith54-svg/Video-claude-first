@@ -1,6 +1,6 @@
 # ADEGAN 5: pelan edit (PREVIEW) · 5 Latihan Utama
 
-**Sumber:** 17 klip "Adegan 5.x" dalam Drive. Final belum di-render.
+**Sumber:** 17 klip "Adegan 5.x" dalam Drive → **Preview: 12:27**. Final belum di-render.
 
 ## Permintaan & cara
 - **Buang bunyi latar yang mengganggu.** Semua klip simulasi/contoh pergerakan dibisukan (ada sembang "20 second lagi… ok dah", kiraan "1, 2, 3", angin) dan diganti muzik latar + SFX. Suara penerangan dibersihkan: buang dengung angin (high-pass), kurangkan bunyi bising (noise reduction), gate lembut antara perkataan, kemudian normalisasi.
@@ -27,7 +27,7 @@ Simulasi pecutan diletak **sebelum** penerangan Zarith sebab dia mula dengan "It
 
 ## Perlu sahkan sebelum final
 1. **Tiada Adegan 5.3 dalam Drive.** 5.2a mula dengan "sebentar tadi kita baru sahaja melihat bagaimana latihan 3 dilakukan", tapi klip demo latihan 3 (hentakan melepasi tali getah) tiada. Ada klip lagi nak upload?
-2. 5.2a: transkripsi dengar "melompat melepasi **maka/baka** dan besi" dan "kami menggunakan **baka** dan halangan". Saya tulis "palang". Perkataan sebenar? (tali getah?)
+2. 5.2a: transkripsi dengar "melompat melepasi **maka/baka** dan besi" dan "kami menggunakan **baka** dan halangan". Dalam caption saya tulis "halangan" atau tinggalkan perkataan tu. Perkataan sebenar? (tali getah?)
 3. 5.4a: Hatim sebut plank "20 hingga **20** saat". Panel tunjuk "20–30 saat" ikut jadual. OK?
 4. 5.4a & 5.5c/d/e: jersi tulis "HATIM", jadi saya label **Ahmad Hatim**. Betul?
 5. Kreativiti pecutan: "zon tolak dan zon kuning untuk zon tegak". Warna kon zon tolak? Bar sekarang merah = zon tolak, kuning = zon tegak.
