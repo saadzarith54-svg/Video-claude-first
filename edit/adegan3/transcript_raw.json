@@ -1,0 +1,947 @@
+[
+ {
+  "start": 6.300000000000002,
+  "end": 11.8,
+  "text": " Baiklah, kami telah pun menyusun lima latihan",
+  "words": [
+   {
+    "w": " Baiklah,",
+    "s": 6.300000000000002,
+    "e": 7.46
+   },
+   {
+    "w": " kami",
+    "s": 7.52,
+    "e": 8.42
+   },
+   {
+    "w": " telah",
+    "s": 8.42,
+    "e": 8.82
+   },
+   {
+    "w": " pun",
+    "s": 8.82,
+    "e": 9.0
+   },
+   {
+    "w": " menyusun",
+    "s": 9.0,
+    "e": 9.68
+   },
+   {
+    "w": " lima",
+    "s": 9.68,
+    "e": 10.4
+   },
+   {
+    "w": " latihan",
+    "s": 10.4,
+    "e": 11.8
+   }
+  ]
+ },
+ {
+  "start": 11.8,
+  "end": 15.82,
+  "text": " Mengikut urutan yang pertama iaitu fasa teknik",
+  "words": [
+   {
+    "w": " Mengikut",
+    "s": 11.8,
+    "e": 12.98
+   },
+   {
+    "w": " urutan",
+    "s": 12.98,
+    "e": 13.44
+   },
+   {
+    "w": " yang",
+    "s": 13.44,
+    "e": 14.1
+   },
+   {
+    "w": " pertama",
+    "s": 14.1,
+    "e": 14.44
+   },
+   {
+    "w": " iaitu",
+    "s": 14.44,
+    "e": 15.04
+   },
+   {
+    "w": " fasa",
+    "s": 15.04,
+    "e": 15.32
+   },
+   {
+    "w": " teknik",
+    "s": 15.32,
+    "e": 15.82
+   }
+  ]
+ },
+ {
+  "start": 15.82,
+  "end": 20.4,
+  "text": " Bermulanya daripada percutan sehinggalah pendaratan",
+  "words": [
+   {
+    "w": " Bermulanya",
+    "s": 15.82,
+    "e": 17.68
+   },
+   {
+    "w": " daripada",
+    "s": 17.68,
+    "e": 18.24
+   },
+   {
+    "w": " percutan",
+    "s": 18.24,
+    "e": 18.76
+   },
+   {
+    "w": " sehinggalah",
+    "s": 18.76,
+    "e": 19.62
+   },
+   {
+    "w": " pendaratan",
+    "s": 19.62,
+    "e": 20.4
+   }
+  ]
+ },
+ {
+  "start": 20.4,
+  "end": 24.42,
+  "text": " Kami juga telah berbincang berkaitan",
+  "words": [
+   {
+    "w": " Kami",
+    "s": 20.4,
+    "e": 22.22
+   },
+   {
+    "w": " juga",
+    "s": 22.22,
+    "e": 22.44
+   },
+   {
+    "w": " telah",
+    "s": 22.44,
+    "e": 22.86
+   },
+   {
+    "w": " berbincang",
+    "s": 22.86,
+    "e": 23.58
+   },
+   {
+    "w": " berkaitan",
+    "s": 23.58,
+    "e": 24.42
+   }
+  ]
+ },
+ {
+  "start": 24.42,
+  "end": 29.12,
+  "text": " Untuk memilih latihan yang tidak memerlukan peralatan yang mahal",
+  "words": [
+   {
+    "w": " Untuk",
+    "s": 24.42,
+    "e": 25.98
+   },
+   {
+    "w": " memilih",
+    "s": 25.98,
+    "e": 26.36
+   },
+   {
+    "w": " latihan",
+    "s": 26.36,
+    "e": 26.7
+   },
+   {
+    "w": " yang",
+    "s": 26.7,
+    "e": 26.9
+   },
+   {
+    "w": " tidak",
+    "s": 26.9,
+    "e": 27.12
+   },
+   {
+    "w": " memerlukan",
+    "s": 27.12,
+    "e": 27.86
+   },
+   {
+    "w": " peralatan",
+    "s": 27.86,
+    "e": 28.62
+   },
+   {
+    "w": " yang",
+    "s": 28.62,
+    "e": 28.82
+   },
+   {
+    "w": " mahal",
+    "s": 28.82,
+    "e": 29.12
+   }
+  ]
+ },
+ {
+  "start": 29.12,
+  "end": 36.76,
+  "text": " Cukuplah kita menggunakan kut, kotak rendah, tali getah dan kotak pasir",
+  "words": [
+   {
+    "w": " Cukuplah",
+    "s": 29.12,
+    "e": 29.94
+   },
+   {
+    "w": " kita",
+    "s": 29.94,
+    "e": 30.16
+   },
+   {
+    "w": " menggunakan",
+    "s": 30.16,
+    "e": 30.86
+   },
+   {
+    "w": " kut,",
+    "s": 30.86,
+    "e": 31.32
+   },
+   {
+    "w": " kotak",
+    "s": 31.4,
+    "e": 32.86
+   },
+   {
+    "w": " rendah,",
+    "s": 32.86,
+    "e": 33.32
+   },
+   {
+    "w": " tali",
+    "s": 33.38,
+    "e": 34.16
+   },
+   {
+    "w": " getah",
+    "s": 34.16,
+    "e": 34.48
+   },
+   {
+    "w": " dan",
+    "s": 34.48,
+    "e": 34.98
+   },
+   {
+    "w": " kotak",
+    "s": 34.98,
+    "e": 36.46
+   },
+   {
+    "w": " pasir",
+    "s": 36.46,
+    "e": 36.76
+   }
+  ]
+ },
+ {
+  "start": 36.76,
+  "end": 40.32,
+  "text": " Untuk tahap keupayaan pelajar pula",
+  "words": [
+   {
+    "w": " Untuk",
+    "s": 36.76,
+    "e": 38.16
+   },
+   {
+    "w": " tahap",
+    "s": 38.16,
+    "e": 38.56
+   },
+   {
+    "w": " keupayaan",
+    "s": 38.56,
+    "e": 39.4
+   },
+   {
+    "w": " pelajar",
+    "s": 39.4,
+    "e": 40.0
+   },
+   {
+    "w": " pula",
+    "s": 40.0,
+    "e": 40.32
+   }
+  ]
+ },
+ {
+  "start": 40.32,
+  "end": 43.2,
+  "text": " Kami mulakan dengan beban ringan",
+  "words": [
+   {
+    "w": " Kami",
+    "s": 40.32,
+    "e": 41.44
+   },
+   {
+    "w": " mulakan",
+    "s": 41.44,
+    "e": 41.74
+   },
+   {
+    "w": " dengan",
+    "s": 41.74,
+    "e": 42.14
+   },
+   {
+    "w": " beban",
+    "s": 42.14,
+    "e": 42.8
+   },
+   {
+    "w": " ringan",
+    "s": 42.8,
+    "e": 43.2
+   }
+  ]
+ },
+ {
+  "start": 44.62,
+  "end": 51.72,
+  "text": " Secara ulangan dan ketinggian yang dinaikkan secara berangsur-angsur untuk beberapa minggu",
+  "words": [
+   {
+    "w": " Secara",
+    "s": 44.62,
+    "e": 45.58
+   },
+   {
+    "w": " ulangan",
+    "s": 45.58,
+    "e": 45.94
+   },
+   {
+    "w": " dan",
+    "s": 45.94,
+    "e": 46.38
+   },
+   {
+    "w": " ketinggian",
+    "s": 46.38,
+    "e": 47.24
+   },
+   {
+    "w": " yang",
+    "s": 47.24,
+    "e": 48.52
+   },
+   {
+    "w": " dinaikkan",
+    "s": 48.52,
+    "e": 49.22
+   },
+   {
+    "w": " secara",
+    "s": 49.22,
+    "e": 49.56
+   },
+   {
+    "w": " berangsur",
+    "s": 49.56,
+    "e": 50.04
+   },
+   {
+    "w": "-angsur",
+    "s": 50.04,
+    "e": 50.32
+   },
+   {
+    "w": " untuk",
+    "s": 50.32,
+    "e": 50.7
+   },
+   {
+    "w": " beberapa",
+    "s": 50.7,
+    "e": 51.3
+   },
+   {
+    "w": " minggu",
+    "s": 51.3,
+    "e": 51.72
+   }
+  ]
+ },
+ {
+  "start": 51.72,
+  "end": 55.98,
+  "text": " Set penuh dilakukan sebanyak dua kali sahaja dalam seminggu",
+  "words": [
+   {
+    "w": " Set",
+    "s": 51.72,
+    "e": 52.46
+   },
+   {
+    "w": " penuh",
+    "s": 52.46,
+    "e": 52.88
+   },
+   {
+    "w": " dilakukan",
+    "s": 52.88,
+    "e": 53.58
+   },
+   {
+    "w": " sebanyak",
+    "s": 53.58,
+    "e": 54.14
+   },
+   {
+    "w": " dua",
+    "s": 54.14,
+    "e": 54.48
+   },
+   {
+    "w": " kali",
+    "s": 54.48,
+    "e": 54.76
+   },
+   {
+    "w": " sahaja",
+    "s": 54.76,
+    "e": 55.24
+   },
+   {
+    "w": " dalam",
+    "s": 55.24,
+    "e": 55.5
+   },
+   {
+    "w": " seminggu",
+    "s": 55.5,
+    "e": 55.98
+   }
+  ]
+ },
+ {
+  "start": 55.98,
+  "end": 59.08,
+  "text": " Dan sekurang-kurangnya diberikan sehat",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 55.98,
+    "e": 56.66
+   },
+   {
+    "w": " sekurang",
+    "s": 56.66,
+    "e": 57.28
+   },
+   {
+    "w": "-kurangnya",
+    "s": 57.28,
+    "e": 57.84
+   },
+   {
+    "w": " diberikan",
+    "s": 57.84,
+    "e": 58.7
+   },
+   {
+    "w": " sehat",
+    "s": 58.7,
+    "e": 59.08
+   }
+  ]
+ },
+ {
+  "start": 59.12,
+  "end": 61.2,
+  "text": " Setiap setiap setiap hari untuk waktu rehat antara sesi",
+  "words": [
+   {
+    "w": " Setiap",
+    "s": 59.12,
+    "e": 59.36
+   },
+   {
+    "w": " setiap",
+    "s": 59.36,
+    "e": 59.36
+   },
+   {
+    "w": " setiap",
+    "s": 59.36,
+    "e": 59.36
+   },
+   {
+    "w": " hari",
+    "s": 59.36,
+    "e": 59.36
+   },
+   {
+    "w": " untuk",
+    "s": 59.36,
+    "e": 59.54
+   },
+   {
+    "w": " waktu",
+    "s": 59.54,
+    "e": 59.98
+   },
+   {
+    "w": " rehat",
+    "s": 59.98,
+    "e": 60.48
+   },
+   {
+    "w": " antara",
+    "s": 60.48,
+    "e": 60.94
+   },
+   {
+    "w": " sesi",
+    "s": 60.94,
+    "e": 61.2
+   }
+  ]
+ },
+ {
+  "start": 61.2,
+  "end": 66.84,
+  "text": " Minggu satu dan minggu dua adalah di mana penguasaan teknik dilakukan",
+  "words": [
+   {
+    "w": " Minggu",
+    "s": 61.2,
+    "e": 62.64
+   },
+   {
+    "w": " satu",
+    "s": 62.64,
+    "e": 62.84
+   },
+   {
+    "w": " dan",
+    "s": 62.84,
+    "e": 63.34
+   },
+   {
+    "w": " minggu",
+    "s": 63.34,
+    "e": 63.74
+   },
+   {
+    "w": " dua",
+    "s": 63.74,
+    "e": 64.06
+   },
+   {
+    "w": " adalah",
+    "s": 64.06,
+    "e": 64.68
+   },
+   {
+    "w": " di",
+    "s": 64.68,
+    "e": 65.02
+   },
+   {
+    "w": " mana",
+    "s": 65.02,
+    "e": 65.22
+   },
+   {
+    "w": " penguasaan",
+    "s": 65.22,
+    "e": 66.06
+   },
+   {
+    "w": " teknik",
+    "s": 66.06,
+    "e": 66.44
+   },
+   {
+    "w": " dilakukan",
+    "s": 66.44,
+    "e": 66.84
+   }
+  ]
+ },
+ {
+  "start": 68.12,
+  "end": 74.84,
+  "text": " Menegaklah minggu tiga dan minggu empat merupakan antara minggu untuk menambahkan set ataupun jarak",
+  "words": [
+   {
+    "w": " Menegaklah",
+    "s": 67.75999999999999,
+    "e": 68.16
+   },
+   {
+    "w": " minggu",
+    "s": 68.16,
+    "e": 68.4
+   },
+   {
+    "w": " tiga",
+    "s": 68.4,
+    "e": 68.72
+   },
+   {
+    "w": " dan",
+    "s": 68.72,
+    "e": 68.96
+   },
+   {
+    "w": " minggu",
+    "s": 68.96,
+    "e": 69.16
+   },
+   {
+    "w": " empat",
+    "s": 69.16,
+    "e": 69.64
+   },
+   {
+    "w": " merupakan",
+    "s": 69.64,
+    "e": 70.4
+   },
+   {
+    "w": " antara",
+    "s": 70.4,
+    "e": 71.88
+   },
+   {
+    "w": " minggu",
+    "s": 71.88,
+    "e": 72.48
+   },
+   {
+    "w": " untuk",
+    "s": 72.48,
+    "e": 72.8
+   },
+   {
+    "w": " menambahkan",
+    "s": 72.8,
+    "e": 73.58
+   },
+   {
+    "w": " set",
+    "s": 73.58,
+    "e": 73.9
+   },
+   {
+    "w": " ataupun",
+    "s": 73.9,
+    "e": 74.44
+   },
+   {
+    "w": " jarak",
+    "s": 74.44,
+    "e": 74.84
+   }
+  ]
+ },
+ {
+  "start": 75.82000000000001,
+  "end": 77.96,
+  "text": " Dari segi keselamatan pula",
+  "words": [
+   {
+    "w": " Dari",
+    "s": 75.82000000000001,
+    "e": 76.62
+   },
+   {
+    "w": " segi",
+    "s": 76.62,
+    "e": 77.0
+   },
+   {
+    "w": " keselamatan",
+    "s": 77.0,
+    "e": 77.58
+   },
+   {
+    "w": " pula",
+    "s": 77.58,
+    "e": 77.96
+   }
+  ]
+ },
+ {
+  "start": 77.96,
+  "end": 83.56,
+  "text": " Dari segi keselamatan, setiap latihan itu mestilah dan ada rehat yang cukup",
+  "words": [
+   {
+    "w": " Dari",
+    "s": 77.96,
+    "e": 78.34
+   },
+   {
+    "w": " segi",
+    "s": 78.34,
+    "e": 78.7
+   },
+   {
+    "w": " keselamatan,",
+    "s": 78.7,
+    "e": 79.16
+   },
+   {
+    "w": " setiap",
+    "s": 79.38,
+    "e": 80.16
+   },
+   {
+    "w": " latihan",
+    "s": 80.16,
+    "e": 80.5
+   },
+   {
+    "w": " itu",
+    "s": 80.5,
+    "e": 80.76
+   },
+   {
+    "w": " mestilah",
+    "s": 80.76,
+    "e": 81.72
+   },
+   {
+    "w": " dan",
+    "s": 81.72,
+    "e": 82.02
+   },
+   {
+    "w": " ada",
+    "s": 82.02,
+    "e": 82.52
+   },
+   {
+    "w": " rehat",
+    "s": 82.52,
+    "e": 83.0
+   },
+   {
+    "w": " yang",
+    "s": 83.0,
+    "e": 83.14
+   },
+   {
+    "w": " cukup",
+    "s": 83.14,
+    "e": 83.56
+   }
+  ]
+ },
+ {
+  "start": 83.56,
+  "end": 89.02,
+  "text": " Tinggi kotak yang rehatkan pada 20 cm hingga 30 cm",
+  "words": [
+   {
+    "w": " Tinggi",
+    "s": 83.56,
+    "e": 84.38
+   },
+   {
+    "w": " kotak",
+    "s": 84.38,
+    "e": 84.76
+   },
+   {
+    "w": " yang",
+    "s": 84.76,
+    "e": 84.92
+   },
+   {
+    "w": " rehatkan",
+    "s": 84.92,
+    "e": 85.5
+   },
+   {
+    "w": " pada",
+    "s": 85.5,
+    "e": 85.92
+   },
+   {
+    "w": " 20",
+    "s": 85.92,
+    "e": 86.76
+   },
+   {
+    "w": " cm",
+    "s": 86.76,
+    "e": 87.52
+   },
+   {
+    "w": " hingga",
+    "s": 87.52,
+    "e": 88.16
+   },
+   {
+    "w": " 30",
+    "s": 88.16,
+    "e": 88.48
+   },
+   {
+    "w": " cm",
+    "s": 88.48,
+    "e": 89.02
+   }
+  ]
+ },
+ {
+  "start": 89.02,
+  "end": 89.1,
+  "text": " Terima kasih kerana menonton!",
+  "words": [
+   {
+    "w": " Terima",
+    "s": 89.02,
+    "e": 89.1
+   },
+   {
+    "w": " kasih",
+    "s": 89.1,
+    "e": 89.1
+   },
+   {
+    "w": " kerana",
+    "s": 89.1,
+    "e": 89.1
+   },
+   {
+    "w": " menonton!",
+    "s": 89.1,
+    "e": 89.1
+   }
+  ]
+ },
+ {
+  "start": 89.12,
+  "end": 93.32,
+  "text": " Dan pelajar realiti diminta untuk berhenti",
+  "words": [
+   {
+    "w": " Dan",
+    "s": 89.12,
+    "e": 89.78
+   },
+   {
+    "w": " pelajar",
+    "s": 89.78,
+    "e": 91.2
+   },
+   {
+    "w": " realiti",
+    "s": 91.2,
+    "e": 91.68
+   },
+   {
+    "w": " diminta",
+    "s": 91.68,
+    "e": 92.46
+   },
+   {
+    "w": " untuk",
+    "s": 92.46,
+    "e": 92.66
+   },
+   {
+    "w": " berhenti",
+    "s": 92.66,
+    "e": 93.32
+   }
+  ]
+ },
+ {
+  "start": 93.32,
+  "end": 99.1,
+  "text": " Sekarang kita akan ke bandar untuk menyaksikan bagaimana set ini dilakukan",
+  "words": [
+   {
+    "w": " Sekarang",
+    "s": 93.32,
+    "e": 94.8
+   },
+   {
+    "w": " kita",
+    "s": 94.8,
+    "e": 95.26
+   },
+   {
+    "w": " akan",
+    "s": 95.26,
+    "e": 95.8
+   },
+   {
+    "w": " ke",
+    "s": 95.8,
+    "e": 96.0
+   },
+   {
+    "w": " bandar",
+    "s": 96.0,
+    "e": 96.36
+   },
+   {
+    "w": " untuk",
+    "s": 96.36,
+    "e": 96.62
+   },
+   {
+    "w": " menyaksikan",
+    "s": 96.62,
+    "e": 97.24
+   },
+   {
+    "w": " bagaimana",
+    "s": 97.24,
+    "e": 97.76
+   },
+   {
+    "w": " set",
+    "s": 97.76,
+    "e": 98.06
+   },
+   {
+    "w": " ini",
+    "s": 98.06,
+    "e": 98.3
+   },
+   {
+    "w": " dilakukan",
+    "s": 98.3,
+    "e": 99.1
+   }
+  ]
+ }
+]
