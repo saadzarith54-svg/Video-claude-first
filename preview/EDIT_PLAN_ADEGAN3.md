@@ -40,6 +40,6 @@ Semua jeda dikekalkan. Zoom/framing ikut siapa yang bercakap (analisis pergeraka
 ## Perlu sahkan sebelum final
 1. **"kon"**: Whisper dengar "kut" dua kali. Saya andaikan "kon" (cone). Betul?
 2. **"ke padang"**: Whisper dengar "bandar/badan". Saya tulis "padang". Betul?
-3. **Orang kanan**: saya label "Ahmad Muhammad Amsyar Rasif · Penganalisis". Betul Amsyar, bukan Amsyar?
+3. **Orang kanan**: disahkan Muhammad Amsyar Rasif (Penganalisis). ✅
 4. **Kalendar** menunjukkan Isnin & Khamis sebagai contoh hari latihan. Video tak sebut hari spesifik. Nak tukar atau buang nama hari?
 5. Jadual dipaparkan ~12 saat (sepanjang Amsyar cakap tentang minggu). Nak lebih lama (freeze)?
