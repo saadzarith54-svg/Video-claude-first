@@ -18,6 +18,8 @@ for i, f in enumerate(fr):
     # robust centre: take the biggest column cluster
     cx = np.median(xs); keep = np.abs(xs - cx) < 30
     xs, ys = xs[keep], ys[keep]
+    if len(xs) < 10:
+        res.append([i / 10, None, None, None]); continue
     res.append([i / 10, float(np.median(xs) * 4), float((ys.min() + ys.max()) / 2 * 4), float((ys.max() - ys.min()) * 4)])
 json.dump(res, open(out, "w"))
 ok = [r for r in res if r[1] is not None]
