@@ -1,6 +1,10 @@
-# ADEGAN 3: pelan edit (PREVIEW)
+# ADEGAN 3: pelan edit (PREVIEW, versi ikut raw)
 
-**Sumber:** "AGEGAN 3" (1:48), Zarith (kiri) & Hatim (kanan) di meja → **Preview:** 1:18. Final belum di-render.
+**Sumber:** "AGEGAN 3" (1:48) → **Preview:** 1:48. Final belum di-render.
+
+**Versi ini ikut raw** (permintaan: nampak macam tengah berbincang, panjangkan masa): susunan asal, semua jeda dikekalkan, tiada hook dipindah, tiada ayat dibuang (termasuk "dari segi keselamatan" yang diulang). Grafik, caption & SFX ditambah di atas footage asal pada masa ia disebut. 0:00–0:06 (mereka bersedia) diisi tajuk "PERBINCANGAN · REKA BENTUK 5 LATIHAN". Ending asal (bangun & keluar) pada kelajuan biasa + end card.
+
+> Versi sebelum ini (1:18, hook dipindah ke depan & jeda dipotong) masih boleh dijana semula: `HOOK_RANGE = (26.42, 36.80)`, `GAP_MIN = 0.35` dalam `edit/adegan3/edl3.py`.
 
 ## Transkrip
 | Masa raw | Siapa | Ayat | Status |
@@ -22,7 +26,7 @@ Semua jeda lebih 0.35s dipendekkan ke 0.22s. Zoom/framing ikut siapa yang bercak
 - **Prinsip reka bentuk**: sistematik, sesuai tahap, selamat, boleh dilaksanakan. Widget kecil di atas kanan, setiap prinsip dapat ✓ bila disebut.
 - **Jadual parameter lengkap lima latihan** (Latihan, Jenis, Intensiti, Jarak/tempoh, Ulangan & set, Rehat, Perkembangan beban), dari jadual skrip. Masa Hatim cakap tentang minggu, lajur "Perkembangan beban" ditonjolkan: "Minggu 1–2: kuasai teknik", kemudian "Minggu 3–4: tambah set / jarak".
 
-## Struktur preview
+## Struktur preview (versi lama 1:18, untuk rujukan)
 | Preview | Bahagian | SFX |
 |---|---|---|
 | 0:00–0:08 | **HOOK**: "TANPA PERALATAN MAHAL", ikon kon, kotak rendah, tali getah, kotak pasir muncul ikut sebutan | boom, pop ×4, riser + flash |

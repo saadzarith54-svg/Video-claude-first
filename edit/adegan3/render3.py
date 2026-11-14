@@ -67,7 +67,7 @@ def make_regions(a0, b0):
         regs = nr
     return regs
 
-HOOK_REGS = make_regions(*L.HOOK_RANGE)
+HOOK_REGS = make_regions(*L.HOOK_RANGE) if L.HOOK_RANGE else []
 BODY_REGS = [r for rng in L.BODY_RANGES for r in make_regions(*rng)]
 # segment list: (src_a, src_b, rate, kind)
 SEGS = [(a, b, 1.0, "hook") for a, b in HOOK_REGS] + [(a, b, 1.0, "body") for a, b in BODY_REGS] + \
@@ -75,7 +75,7 @@ SEGS = [(a, b, 1.0, "hook") for a, b in HOOK_REGS] + [(a, b, 1.0, "body") for a,
 seg_f, t = [], 0
 for a, b, r, k in SEGS:
     n = int(round((b - a) / r * FPS)); seg_f.append((t, n)); t += n
-HOOK_END = seg_f[len(HOOK_REGS) - 1][0] / FPS + seg_f[len(HOOK_REGS) - 1][1] / FPS
+HOOK_END = (seg_f[len(HOOK_REGS) - 1][0] + seg_f[len(HOOK_REGS) - 1][1]) / FPS if HOOK_REGS else 0.0
 TAIL_T0 = seg_f[-1][0] / FPS
 TALK_END_F = t
 END_N = int(round(L.END_HOLD * FPS))
@@ -185,9 +185,10 @@ def icon(d, kind, cx, cy, s, a):
             px, py = rng.uniform(-0.4, 0.4) * s + cx, rng.uniform(-0.05, 0.28) * s + cy
             d.ellipse((px - 2, py - 2, px + 2, py + 2), fill=(190, 150, 90, a))
 
+EQ_OUT = (HOOK_END + 0.2) if HOOK_REGS else (E["eq_pasir"] + 2.2)
 def hook_gfx(d, t):
-    if t > HOOK_END + 0.2: return
-    p, q = inout(t, E["hook_title"], HOOK_END + 0.2, 0.4, 0.25)
+    if t > EQ_OUT: return
+    p, q = inout(t, E["hook_title"], EQ_OUT, 0.4, 0.25)
     if q > 0:
         a = int(255 * q)
         f1, f2 = font(F_XB, 30), font(F_XB, 64)
@@ -213,7 +214,7 @@ def hook_gfx(d, t):
 
 PRINSIP = [("Boleh dilaksanakan", "pr_laksana"), ("Sistematik", "pr_sistematik"), ("Sesuai tahap", "pr_tahap"), ("Selamat", "pr_selamat")]
 def prinsip(d, t):
-    hide = (E["week"] - 0.2 <= t <= E["table_out"] + 0.2) or t < E["prinsip"] or t > E["safe_out"] + 0.2
+    hide = (E["week"] - 0.2 <= t <= E["table_out"] + 0.2) or (E["hook_title"] - 0.2 <= t <= EQ_OUT + 0.1) or t < E["prinsip"] or t > E["safe_out"] + 0.2
     if hide: return
     p = eo((t - E["prinsip"]) / 0.45); a = 255
     x0 = W - 436 + (1 - p) * 470; y0 = 22
@@ -381,8 +382,23 @@ def end_card(d, t):
         l2 = "DEMONSTRASI DI PADANG →"
         d.text(((W - tw(l2, f)) / 2, y + 100 - 32 * sc), l2, font=f, fill=WHITE + (255,), stroke_width=6, stroke_fill=(0, 0, 0, 255))
 
+def intro(d, t):
+    if "intro" not in E or E["intro"] is None: return
+    p, q = inout(t, E["intro"], E["intro_out"], 0.5, 0.4)
+    if q <= 0: return
+    a = int(255 * q); f1, f2 = font(F_XB, 26), font(F_XB, 58)
+    l1 = "PERBINCANGAN"; w1 = tw(l1, f1) + 32
+    y = 230 + (1 - eo(p)) * 30
+    rrect(d, ((W - w1) / 2, y, (W + w1) / 2, y + 44), 10, YEL + (a,))
+    d.text(((W - tw(l1, f1)) / 2, y + 7), l1, font=f1, fill=INK + (a,))
+    sc = clamp(eob((t - E["intro"] - 0.15) / 0.45), 0, 1.2)
+    if sc > 0.02:
+        f = font(F_XB, max(8, int(58 * sc))); l2 = "REKA BENTUK 5 LATIHAN"
+        d.text(((W - tw(l2, f)) / 2, y + 100 - 29 * sc), l2, font=f, fill=WHITE + (a,), stroke_width=6, stroke_fill=(0, 0, 0, a))
+
 def overlays(t):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(img)
+    intro(d, t)
     hook_gfx(d, t)
     lower_third(d, t, E["lt_zarith"], E["lt_zarith_out"], "Muhammad Zarith Ridzuan", "JURULATIH LAPANGAN 1")
     lower_third(d, t, E["lt_hatim"], E["lt_hatim_out"], "Ahmad Hatim", "JURULATIH LAPANGAN 2")
@@ -426,7 +442,7 @@ vid = os.path.join(OUT, "video.mp4")
 enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                         "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "medium",
                         "-crf", "18" if FINAL else "26", "-pix_fmt", "yuv420p", vid], stdin=subprocess.PIPE)
-FLASHES = [HOOK_END, E["table"]]
+FLASHES = ([HOOK_END] if HOOK_REGS else []) + [E["table"]]
 fi = 0
 def emit(img, t):
     global fi
@@ -439,10 +455,10 @@ def emit(img, t):
 
 last = None
 for si, ((a, b, r, kind), (f0, n)) in enumerate(zip(SEGS, seg_f)):
-    (fx, fy), z0 = framing(a + 0.01)
-    if kind != "tail": z0 += 0.12 * (si % 2)
     for k, fr in enumerate(read_frames(a, n, r)):
-        z = z0 + 0.02 * k / max(n - 1, 1)
+        st = a + k * r / FPS
+        (fx, fy), z = framing(st)
+        if HOOK_REGS and kind != "tail": z += 0.12 * (si % 2)
         last = crop(fr, fx, fy, z)
         emit(last, fi / FPS)
 print(f"segments done ({len(SEGS)})", flush=True)
@@ -463,7 +479,7 @@ for (a, b, r, kind), (f0, n) in zip(SEGS, seg_f):
         idx = (np.arange(int(n / FPS * SR)) * r).astype(int) + int(a * SR)
         idx = idx[idx < len(A)]; c = A[idx] * 0.5
         env = np.ones(len(c), np.float32); env[:fade] = np.linspace(0, 1, fade); env[-int(0.3 * SR):] = np.linspace(1, 0, int(0.3 * SR))
-        amb[o:o + len(c)] += c * env[:, None]; continue
+        amb[o:o + len(c)] += c * env[:, None] * 1.6; continue
     s0 = int(a * SR); Ln = int(n / FPS * SR); c = A[s0:s0 + Ln].copy()
     env = np.ones(len(c), np.float32); env[:fade] = np.linspace(0, 1, fade); env[-fade:] = np.linspace(1, 0, fade)
     voice[o:o + len(c)] += c * env[:, None]
@@ -507,8 +523,11 @@ def cue(name, sig, at, g):
 cue("boom (hook title)", boom(), E["hook_title"], 0.7)
 cue("whoosh (hook title)", whoosh(0.45), E["hook_title"] - 0.2, 0.35)
 for k in ("eq_kon", "eq_kotak", "eq_tali", "eq_pasir"): cue(f"pop ({k})", pop(), E[k], 0.9)
-cue("riser into body", riser(0.8), HOOK_END - 0.8, 0.5)
-cue("boom + flash (cut to body)", boom(), HOOK_END, 0.6)
+if HOOK_REGS:
+    cue("riser into body", riser(0.8), HOOK_END - 0.8, 0.5)
+    cue("boom + flash (cut to body)", boom(), HOOK_END, 0.6)
+cue("whoosh (intro title)", whoosh(0.5), E["intro"] - 0.1, 0.35)
+cue("boom (intro title)", boom(), E["intro"] + 0.2, 0.5)
 cue("whoosh (lower third Zarith)", whoosh(0.4), E["lt_zarith"] - 0.1, 0.3)
 cue("whoosh (prinsip)", whoosh(0.4), E["prinsip"] - 0.1, 0.3)
 for k in ("pr_laksana", "pr_sistematik", "pr_tahap", "pr_selamat"): cue(f"ding ({k})", ding(), E[k], 0.45)
