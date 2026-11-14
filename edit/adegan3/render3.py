@@ -150,11 +150,12 @@ def wrap(txt, f, width):
     return lines
 
 # ------------------------------------------------------------------ graphics
-def lower_third(d, t, t_in, t_out, name, tag):
+def lower_third(d, t, t_in, t_out, name, tag, side="left"):
     p, q = inout(t, t_in, t_out, 0.45, 0.3)
     if q <= 0: return
     a = int(255 * q); fN, fT = font(F_XB, 36), font(F_B, 19)
     wN = tw(name, fN) + 48; x0 = -wN + (wN + 40) * eo(p); y0 = 440
+    if side == "right": x0 = W + (W - 40 - wN - W) * eo(p)
     wT = tw(tag, fT) + 28
     rrect(d, (x0, y0, x0 + wT, y0 + 32), 8, YEL + (a,)); d.text((x0 + 14, y0 + 5), tag, font=fT, fill=INK + (a,))
     rrect(d, (x0, y0 + 38, x0 + wN, y0 + 98), 10, TEAL + (int(235 * q),))
@@ -401,7 +402,7 @@ def overlays(t):
     intro(d, t)
     hook_gfx(d, t)
     lower_third(d, t, E["lt_zarith"], E["lt_zarith_out"], "Muhammad Zarith Ridzuan", "JURULATIH LAPANGAN 1")
-    lower_third(d, t, E["lt_hatim"], E["lt_hatim_out"], "Ahmad Hatim", "JURULATIH LAPANGAN 2")
+    lower_third(d, t, E["lt_amsyar"], E["lt_amsyar_out"], "Muhammad Amsyar Rasif", "PENGANALISIS", side="right")
     five_strip(d, t); load_chart(d, t); week(d, t); safety(d, t)
     prinsip(d, t)
     table(d, t)
@@ -534,7 +535,7 @@ for k in ("pr_laksana", "pr_sistematik", "pr_tahap", "pr_selamat"): cue(f"ding (
 for k in range(5): cue(f"pop (latihan {k + 1})", pop(), E["five"] + 0.18 * k, 0.7)
 cue("whoosh (beban chart)", whoosh(0.5), E["load"] - 0.1, 0.35)
 cue("riser (beban naik)", riser(1.2), E["load_naik"] - 1.2, 0.35)
-cue("whoosh (lower third Hatim)", whoosh(0.4), E["lt_hatim"] - 0.1, 0.3)
+cue("whoosh (lower third Amsyar)", whoosh(0.4), E["lt_amsyar"] - 0.1, 0.3)
 cue("whoosh down (minggu)", whoosh(0.5, up=False), E["week"] - 0.1, 0.35)
 cue("pop (latihan 1)", pop(), E["week_2x"], 0.8); cue("pop (latihan 2)", pop(), E["week_2x"] + 0.2, 0.8)
 cue("tick (rehat)", tick(), E["week_rest"], 0.8)

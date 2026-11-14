@@ -1,7 +1,7 @@
-"""ADEGAN 3 edit decision list (source: "AGEGAN 3", 107.6s, Zarith left + Hatim right at a table).
+"""ADEGAN 3 edit decision list (source: "AGEGAN 3", 107.6s, Zarith left + Amsyar right at a table).
 
 Speakers (mouth-motion analysis + frames): Zarith (left, bucket hat): intro, equipment, levels, safety.
-Hatim (right): weekly schedule 49-75s and closing line 93-99s.
+Amsyar (right): weekly schedule 49-75s and closing line 93-99s.
 """
 
 L_XY, R_XY, C_XY = (517, 300), (783, 310), (650, 330)
@@ -23,9 +23,9 @@ FRAMING = [
     (0.0, 26.0, C_XY, 1.05),
     (26.0, 37.0, L_XY, 1.40),    # equipment line, on Zarith
     (36.8, 51.7, C_XY, 1.08),
-    (51.7, 75.5, R_XY, 1.25),    # Hatim
+    (51.7, 75.5, R_XY, 1.25),    # Amsyar
     (75.5, 93.3, (700, 300), 1.25),  # Zarith (kept left of centre), safety panel on the right
-    (93.3, 99.3, R_XY, 1.25),    # Hatim closing
+    (93.3, 99.3, R_XY, 1.25),    # Amsyar closing
     (99.3, 120, C_XY, 1.00),     # tail wide
 ]
 
@@ -44,7 +44,7 @@ EV = {
     "prinsip": 8.2, "pr_laksana": 27.0, "pr_sistematik": 12.98, "pr_tahap": 38.2, "pr_selamat": 76.6,
     "five": 9.95, "five_1": 18.24, "five_5": 19.62, "five_out": 20.55,
     "load": 38.2, "load_ringan": 42.14, "load_naik": 48.5, "load_out": 51.6,
-    "lt_hatim": 51.9, "lt_hatim_out": 55.9,
+    "lt_amsyar": 51.9, "lt_amsyar_out": 55.9,
     "week": 53.2, "week_2x": 54.14, "week_rest": 57.84, "week_out": 61.1,
     "table": 62.4, "table_m12": 62.6, "table_m34": 68.4, "table_out": 74.9,
     "safe": 76.6, "safe_1": 82.52, "safe_2": 84.38, "safe_3": 91.20, "safe_out": 93.3,
