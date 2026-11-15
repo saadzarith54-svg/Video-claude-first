@@ -1,6 +1,6 @@
 # ADEGAN 6: pelan edit (PREVIEW) · Penyejukan Badan
 
-**Sumber:** "ADEGAN 6 ( penyejukan )" (Hatim bercakap, 0:57) + "IMG_4104 adegan 6.1 _ penyejukan" (demo senyap, 2:03). Final belum di-render.
+**Sumber:** "ADEGAN 6 ( penyejukan )" (Hatim bercakap, 0:57) + "IMG_4104 adegan 6.1 _ penyejukan" (demo senyap, 2:03) → **Preview: 3:53**. Final belum di-render.
 
 ## Transkrip (Hatim; jersi tulis "HATIM")
 > Baiklah, apabila selesai kesemua latihan-latihan yang telah ditunjukkan tadi, kita perlulah melakukan penyejukan badan ~~penyejukan badan~~ bagi mengelakkan kekejangan otot. Jadi kita akan mulakan penyejukan badan dengan jogging selama satu minit. Kemudian kita akan [jeda] melakukan regangan statik untuk paha depan, paha belakang, betis dan juga pinggul. Dan yang paling penting dalam melakukan latihan ini, kita mestilah minum air kosong dengan secukupnya.
