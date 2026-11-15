@@ -1,6 +1,6 @@
 # ADEGAN 7: pelan edit (PREVIEW) · Penutup
 
-**Sumber:** "Adegan 7 ( penutup )" (1:22): Zarith (kiri), Amsyar (tengah), Hatim (kanan). Final belum di-render.
+**Sumber:** "Adegan 7 ( penutup )" (1:22): Zarith (kiri), Amsyar (tengah), Hatim (kanan) → **Preview: 1:35**. Final belum di-render.
 
 ## Transkrip
 > Kita telah melihat lima latihan, iaitu yang pertama pecutan, yang kedua bounding, yang ketiga hentakan, yang keempat litar kekuatan dan yang terakhir iaitu pendaratan. Setiap salah satu latihan ini telah melatih komponen kecergasan tertentu dan memperbaiki satu fasa teknik dalam melompat jauh. Parameter latihan ini boleh diubah mengikut tahap kesesuaian pelajar dan kami menekankan keselamatan pada setiap langkah. Jadi, dalam latihan yang kami telah tunjukkan sebentar tadi, kami telah berbincang bersama, berkongsi pendapat untuk menyelesaikan tugasan ini, dan semoga video ini dapat memberi manfaat kepada yang menonton. Semoga setiap latihan ini dapat membantu pelajar untuk melompat lebih jauh serta memperbaiki kekurangan yang ada. Terima kasih kerana menonton. Assalamualaikum. Bye.

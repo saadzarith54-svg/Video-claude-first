@@ -380,10 +380,10 @@ def recap(d, t, t0):
         d.text((x + 24, y + 38), role, font=font(F_SB, 17), fill=(215, 240, 236, aa))
         y += 72
     if lt > 2.2:
-        longjump.draw_longjump(d, min(lt - 2.2, longjump.DURATION), (240, 470, 800, 200), a, font(F_XB, 26), "LOMPAT LEBIH JAUH!")
+        longjump.draw_longjump(d, min(lt - 2.2, longjump.DURATION), (240, 440, 800, 190), a, font(F_XB, 26), "LOMPAT LEBIH JAUH!")
     if lt > 3.2:
         aa = int(a * clamp((lt - 3.2) / 0.4)); f = font(F_XB, 26); s2 = "Assalamualaikum"
-        d.text(((W - tw(s2, f)) / 2, 676), s2, font=f, fill=YEL + (aa,), stroke_width=4, stroke_fill=(0, 0, 0, aa))
+        d.text(((W - tw(s2, f)) / 2, 678), s2, font=f, fill=YEL + (aa,), stroke_width=4, stroke_fill=(0, 0, 0, aa))
 
 def end_card(d, t, t0):
     lt = t - t0; p = eob(lt / 0.45); f1 = font(F_XB, 30); l1 = "SETERUSNYA"; w1 = tw(l1, f1) + 36; y = 250 + (1 - p) * 40
@@ -451,17 +451,17 @@ def mapping(d, t):
     t0, t1 = s2o("7.0", L.MAPPING_T[0]), s2o("7.0", L.MAPPING_T[1])
     p, q = inout(t, t0, t1, 0.4, 0.3)
     if q <= 0: return
-    a = int(255 * q); x0 = W - 470 + (1 - eo(p)) * 500; y0 = 300; pw = 440
+    a = int(255 * q); x0 = W - 512 + (1 - eo(p)) * 540; y0 = 352; pw = 492
     rrect(d, (x0, y0, x0 + pw, y0 + 38), 10, YEL + (a,)); d.text((x0 + 14, y0 + 7), "KOMPONEN KECERGASAN", font=font(F_XB, 20), fill=INK + (a,))
     y = y0 + 46
     for i, (ex, comp) in enumerate(L.MAPPING):
         pi = clamp(eob((t - t0 - 0.3 - 0.25 * i) / 0.3))
         if pi <= 0: break
         aa = int(a * pi)
-        rrect(d, (x0, y, x0 + pw, y + 46), 10, PANEL + (int(225 * q * pi),))
-        d.text((x0 + 12, y + 12), ex, font=font(F_B, 18), fill=WHITE + (aa,))
-        d.text((x0 + 230, y + 12), "→ " + comp, font=font(F_XB, 18), fill=YEL + (aa,))
-        y += 52
+        rrect(d, (x0, y, x0 + pw, y + 38), 9, PANEL + (int(225 * q * pi),))
+        d.text((x0 + 12, y + 9), ex, font=font(F_B, 17), fill=WHITE + (aa,))
+        d.text((x0 + 222, y + 9), "→ " + comp, font=font(F_XB, 17), fill=YEL + (aa,))
+        y += 43
 
 def overlays(t, seg):
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(img)
