@@ -1,4 +1,4 @@
-"""Synthesised score + SFX for the 20 s promo (royalty-free, generated from scratch).
+"""PERAH LAB promo — synthesised upbeat score + SFX (royalty-free, generated from scratch).
 Usage: python3 audio.py out.wav
 Every cue time below matches an animation event in main.js."""
 import sys, wave
@@ -80,59 +80,79 @@ def hit(g=1.0):  # title slam: sub + snare-ish crack + boom tail
 def taiko(g=1.0):
     d = 1.0; t = t_(d); return (np.sin(2 * np.pi * np.cumsum(62 + 60 * np.exp(-t * 25)) / SR) * np.exp(-t * 6) + lp_fast(rng.standard_normal(len(t)), 600) * np.exp(-t * 30) * .4) * g
 
-# ---------- music bed ----------
+
+def splash(g=1.0):
+    d = .9; t = t_(d); n = rng.standard_normal(len(t)); s = bp_sweep(n, 2500, 700) * np.exp(-t * 5) * 1.6
+    for _ in range(34):
+        st = rng.uniform(0, .5); f0 = rng.uniform(500, 1100); k = t >= st; tt = (t - st) * k
+        s += k * np.sin(2 * np.pi * (f0 * tt + 4000 * tt * tt)) * np.exp(-tt * 60) * rng.uniform(.15, .4)
+    return s * g
+def clink(g=1.0):
+    d = .6; t = t_(d); return sum(np.sin(2 * np.pi * f * t) * np.exp(-t * k) * a for f, k, a in [(2350, 14, .5), (3710, 18, .35), (5120, 24, .25), (6630, 30, .15)]) * g
+def kick(g=1.0):
+    d = .35; t = t_(d); return np.sin(2 * np.pi * np.cumsum(48 + 110 * np.exp(-t * 32)) / SR) * np.exp(-t * 9) * g
+def clap(g=1.0):
+    d = .25; t = t_(d); n = hp_fast(rng.standard_normal(len(t)), 900); e = np.zeros(len(t))
+    for o in (0, .011, .022): e += (t >= o) * np.exp(-np.maximum(t - o, 0) * (60 if o < .02 else 18))
+    return lp_fast(n, 6000) * e * g * .6
+def hat(g=1.0, open_=False):
+    d = .2 if open_ else .05; t = t_(d); return hp_fast(rng.standard_normal(len(t)), 7000) * np.exp(-t * (14 if open_ else 80)) * g
+def pluck(f, d=.28, g=1.0, bright=4000):
+    t = t_(d); s = 2 * ((t * f) % 1) - 1 + .5 * (2 * ((t * f * 1.005) % 1) - 1); return lp_fast(s, bright) * np.exp(-t * 9) * np.minimum(1, t / .004) * g
+def bassn(f, d, g=1.0):
+    t = t_(d); s = 2 * ((t * f) % 1) - 1; return lp_fast(s, 700) * np.minimum(1, t / .005) * np.clip((d - t) / .03, 0, 1) * g
+
+BPM = 112; b = 60 / BPM
+def nf(m): return 440 * 2 ** ((m - 69) / 12)
+# progression (C major, bright): C  G  Am F   (one chord per bar)
+CH = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]]
+BASS = [36, 43, 45, 41]
+MEL = [76, 79, 81, 79, 76, 74, 72, 74, 76, 79, 76, 74, 72, 69, 72, 74]  # pentatonic hook (16ths in pairs)
+def groove(t0, t1, lead=True, full=True):
+    beat = 0; x = t0
+    while x < t1 - 1e-6:
+        bar = int(beat // 4) % 4; pos = beat % 4
+        add(kick(.9 if full else .6), x)
+        if pos in (1, 3): add(clap(.55 if full else .35), x, pan=.05)
+        add(hat(.18), x + b / 2, pan=.35); add(hat(.1), x, pan=.35)
+        if full and pos == 3: add(hat(.12, True), x + b / 2, pan=.35)
+        # bass (off-beat bounce)
+        add(bassn(nf(BASS[bar]), b * .45, .55), x); add(bassn(nf(BASS[bar] + 12), b * .4, .3), x + b / 2)
+        # chord stabs on the off-beat
+        if full and pos in (0, 2): [add(pluck(nf(m), .22, .14, 3500), x + b / 2, pan=-.3 + .3 * i) for i, m in enumerate(CH[bar])]
+        if not full and pos == 0: [add(pluck(nf(m), .5, .1, 2200), x, pan=-.3 + .3 * i) for i, m in enumerate(CH[bar])]
+        if lead: add(pluck(nf(MEL[(int(beat * 2)) % 16]), .2, .16, 5000), x, pan=.2); add(pluck(nf(MEL[(int(beat * 2) + 1) % 16]), .2, .12, 5000), x + b / 2, pan=.2)
+        beat += 1; x += b
+# ---------- arrangement ----------
+# HOOK 0–3.0 : stadium tension (no beat)
+add(boom(3.0, 50, 28, .8), 0.0)
+for tt, pn in [(.20, -.5), (.45, .5), (.72, -.3), (.90, .3)]: add(clunk(.85), tt, pan=pn)
+add(whoosh(1.1, 200, 2500, .5, .8), 1.05, pan=-.3)
+add(riser(1.0, .25), 1.2)
+add(splash(1.0), 2.15); add(hit(.7), 2.16); add(clink(.4), 2.3)
+add(whoosh(.45, 400, 5000, .7, .7), 2.7)
+# BRAND reveal 3.0–6.6 : beat drop
+add(hit(.9), 3.0); add(boom(1.5, 80, 40, .6), 3.0)
+groove(3.0, 6.55, lead=True, full=True)
+add(pop(.5), 3.08); add(whoosh(.5, 300, 3000, .35), 3.85); add(whoosh(.55, 200, 2000, .4, .7), 4.0); add(clink(.5), 4.35); add(clink(.35), 4.5)
+add(hit(.6), 4.47); add(whoosh(.4, 1500, 6000, .25), 5.0)
+add(whoosh(.5, 400, 5000, .55, .6), 6.3)
+# BOARD 6.6–15.2 : lighter groove
+groove(6.6, 15.0, lead=False, full=False)
+for i in range(4): add(pop(.28), 6.65 + i * .12, pan=-.3 + i * .2)
+add(whoosh(.85, 250, 1800, .3, .55), 7.2)
+for i in range(6): add(tick(.10 + .02 * i), 7.85 + i * .06, pan=-.4 + i * .15)
+add(tick(.22, 2400), 8.3); add(chime(.8, 1568), 8.55); add(shimmer(1.3, .9), 8.6); add(whoosh(.4, 1200, 5000, .22), 9.0); add(shimmer(.6, .5), 9.45)
+add(whoosh(.7, 220, 2600, .4, .6), 9.85); add(tick(.2, 2800), 10.2); add(pop(.45), 10.45); add(pop(.45), 10.9); add(tick(.18), 11.3); add(shimmer(.6, .5), 11.55)
+add(whoosh(.7, 220, 2600, .4, .6), 11.9); add(riser(.85, .14), 12.75); add(pop(.5), 13.55); add(chime(.4, 2093), 13.62)
+add(whoosh(.9, 200, 2200, .4, .6), 14.1); add(pop(.4), 14.35); add(riser(.8, .3), 14.4)
+add(whoosh(.5, 400, 5000, .55, .6), 14.95)
+# END 15.3–20 : full groove + tag
+add(hit(.85), 15.3); groove(15.3, 19.6, lead=True, full=True)
+add(pop(.5), 15.42); add(whoosh(.55, 200, 2000, .4, .7), 15.55); add(splash(.6), 15.7); add(clink(.4), 15.9)
+add(pop(.35), 16.0); add(hit(.55), 16.27); add(pop(.45), 16.82)
+add(hit(.9), 19.6); [add(pluck(nf(m), 1.4, .16, 3000), 19.6) for m in (60, 64, 67, 72)]; add(shimmer(1.0, .6), 19.0)
 t = np.arange(N) / SR
-def saw(f): return 2 * ((t * f) % 1) - 1
-drone = (saw(55) + saw(55.4) * .8 + saw(82.4) * .5 + saw(110.1) * .25)
-drone = lp_fast(drone, 380) * .12
-dr_env = np.clip(t / 1.5, 0, 1) * np.where(t < 16.95, 1, np.clip(1 - (t - 16.95) / .08, 0, 1))
-dr_env += np.where(t >= 17.05, np.clip((t - 17.05) / .4, 0, 1) * np.clip((20 - t) / 1.6, 0, 1) * 1.15, 0)
-L += drone * dr_env; R += np.roll(drone, 240) * dr_env
-# final chord (D major-ish, warm) from the title hits
-for f, a in [(73.4, .7), (110, .5), (146.8, .35), (185, .22), (220, .2), (293.7, .12)]:
-    c = (np.sin(2 * np.pi * f * t) + .3 * np.sin(2 * np.pi * 2 * f * t)) * a * .1 * np.where(t > 17.45, np.clip((t - 17.45) / .6, 0, 1) * np.clip((20 - t) / 1.4, 0, 1), 0)
-    L += c; R += c
-# pulse: 100 BPM taiko from 3.2 → 16.9, denser in the trophy section
-beat = 60 / 100
-b = 3.24
-while b < 16.9:
-    big = 10.6 <= b < 14.2
-    add(taiko(.55 if big else .38), b, pan=-.1)
-    if big or b > 14.2: add(taiko(.22), b + beat / 2, pan=.15)
-    b += beat
-# soft 8th-note hi tick in the info section for momentum
-x = 7.4
-while x < 10.4: add(tick(.05, 6000), x, pan=.3); x += beat / 2
-
-# ---------- SFX cues (seconds) ----------
-add(boom(3.0, 50, 28, .8), 0.0)                       # dark open rumble
-for tt, pn in [(.20, -.5), (.45, .5), (.72, -.3), (.90, .3)]: add(clunk(.9), tt, pan=pn)   # floodlights ignite
-add(whoosh(1.25, 200, 2500, .55, .8), 1.2, pan=-.3)    # ball launched from the dark
-add(boom(1.6, 90, 45, .55), 2.42)                       # ball lands in hero position
-add(shimmer(1.0, .8), 2.4)
-add(whoosh(.55, 400, 5000, .8, .7), 2.82)              # ball into camera → transition
-for i in range(4): add(pop(.25), 3.28 + i * .13, pan=-.3 + i * .2)   # cards build
-add(whoosh(.95, 250, 1800, .35, .55), 3.9)              # push-in to calendar
-for i in range(6): add(tick(.10 + .02 * i), 4.5 + i * .07, pan=-.4 + i * .15)   # dates cascade
-add(tick(.22, 2400), 5.18)                              # Sabtu column
-add(chime(.9), 5.47); add(shimmer(1.4, 1.0), 5.5)       # 21 NOVEMBER highlight
-add(whoosh(.4, 1200, 5000, .25), 5.93)                  # pill
-add(shimmer(.7, .6), 6.5)                               # card shine
-add(whoosh(.8, 220, 2600, .45, .6), 7.35)               # camera arc → info card
-add(hit(.55), 7.86)                                     # "HTK"
-for tt in (8.2, 8.45, 8.65): add(tick(.22, 2800), tt)
-add(shimmer(.7, .6), 9.45)
-add(whoosh(.6, 300, 4500, .7, .6), 10.25)               # whip to trophy
-add(boom(2.6, 75, 34, .9), 10.62); add(shimmer(2.2, .9), 10.7)   # trophy reveal
-add(whoosh(.55, 300, 4500, .6, .6), 13.85)              # back to board
-add(riser(.95, .12), 14.8)                              # route drawing
-add(pop(.45), 15.72); add(chime(.45, 1760), 15.78)      # pin drop + ping
-add(whoosh(.9, 200, 2200, .4, .6), 16.2)                # pull-out
-add(riser(.8, .35), 16.25)
-add(boom(2.0, 60, 30, .9), 17.05)                       # cut to finale
-for tt in (17.45, 17.85, 18.3): add(hit(.95), tt)       # SATU PADANG / SEMANGAT / KEBANGGAAN
-add(shimmer(1.4, .8), 18.75)
-
 # ---------- simple stereo reverb + master ----------
 ir_len = int(SR * 1.6); ir = rng.standard_normal(ir_len) * np.exp(-np.arange(ir_len) / SR * 3.2); ir = lp_fast(ir, 5000); ir /= np.sqrt(np.sum(ir ** 2))
 def conv(x, h): n = len(x) + len(h); F = np.fft.rfft(x, n) * np.fft.rfft(h, n); return np.fft.irfft(F, n)[:len(x)]

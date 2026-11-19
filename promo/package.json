@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/bowlby-one": "^5.0.12",
+    "@fontsource/lilita-one": "^5.0.11",
     "three": "^0.160.0"
   }
 }

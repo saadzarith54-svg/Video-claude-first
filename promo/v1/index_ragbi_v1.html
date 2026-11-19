@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>HTK Ragbi Promo</title>
+<style>
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-Black.otf'); font-weight: 900; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-ExtraBold.otf'); font-weight: 800; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-Bold.otf'); font-weight: 700; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-SemiBold.otf'); font-weight: 600; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-Medium.otf'); font-weight: 500; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-Regular.otf'); font-weight: 400; }
+  @font-face { font-family: 'IDX'; src: url('fonts/InterDisplay-Light.otf'); font-weight: 300; }
+  html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+  #stage { position: relative; overflow: hidden; background: #000; }
+  #stage canvas { position: absolute; inset: 0; display: block; }
+  .ov { position: absolute; inset: 0; pointer-events: none; }
+  #vignette { background: radial-gradient(ellipse 75% 60% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,4,16,.55) 100%); }
+  #dip { background: #030918; opacity: 0; }
+  #flash { background: #fff6dc; opacity: 0; mix-blend-mode: screen; }
+  .txt { position: absolute; left: 0; right: 0; text-align: center; font-family: 'IDX', sans-serif; color: #fff; opacity: 0; will-change: transform, opacity; }
+  .gold { background: linear-gradient(180deg, #FFF6D6 0%, #FFE08A 30%, #F5B83A 65%, #D08A12 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tracking { letter-spacing: .14em; }
+  #hookCap { top: 68%; font-weight: 800; font-size: calc(var(--u) * 46); }
+  #hookCap .l2 { display:block; margin-top: calc(var(--u) * 10); font-weight: 600; font-size: calc(var(--u) * 34); color: #D8E2FF; letter-spacing: .4em; }
+  #trophyCap { top: 77%; font-weight: 800; font-size: calc(var(--u) * 40); }
+  #trophyCap .sub { display:block; font-weight:600; font-size: calc(var(--u) * 22); color:#CFDBFF; letter-spacing:.45em; margin-bottom: calc(var(--u)*12); }
+  .fin { font-weight: 900; line-height: .98; font-size: calc(var(--u) * 104); letter-spacing: -0.01em; text-shadow: 0 0 calc(var(--u)*40) rgba(10,30,90,.6); }
+  #f1 { top: 27%; } #f2 { top: 37.5%; } #f3 { top: 48%; font-size: calc(var(--u) * 92); }
+  #finRule { position:absolute; left: 30%; right: 30%; top: 60.6%; height: calc(var(--u)*4); background: linear-gradient(90deg, rgba(242,182,48,0), #F2B630, rgba(242,182,48,0)); transform: scaleX(0); }
+  #finFoot { top: 63%; font-weight: 700; font-size: calc(var(--u) * 30); letter-spacing: .12em; line-height: 1.55; }
+  #finFoot .g { color: #FFD66B; }
+  #finFoot .w { color: #E8EEFF; font-weight: 600; font-size: calc(var(--u) * 26); letter-spacing: .22em; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./node_modules/three/build/three.module.js", "three/addons/": "./node_modules/three/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="stage">
+  <div id="vignette" class="ov"></div>
+  <div id="hookCap" class="txt"><span class="gold tracking">PIALA PENGARAH RAGBI</span><span class="l2">21 · 11 · 2026</span></div>
+  <div id="trophyCap" class="txt"><span class="sub">HTK</span><span class="gold">PIALA PENGARAH RAGBI</span></div>
+  <div id="f1" class="txt fin">SATU PADANG,</div>
+  <div id="f2" class="txt fin">SATU SEMANGAT,</div>
+  <div id="f3" class="txt fin"><span class="gold">SATU KEBANGGAAN!</span></div>
+  <div id="finRule"></div>
+  <div id="finFoot" class="txt"><span class="g">HTK &amp; PIALA PENGARAH RAGBI</span><br><span class="w">21 NOVEMBER 2026 · SABTU</span><br><span class="w">IPG KAMPUS PERLIS</span></div>
+  <div id="finShade" class="ov" style="opacity:0;background:linear-gradient(180deg,rgba(2,6,20,.55) 0%,rgba(2,6,20,.15) 45%,rgba(2,6,20,.75) 100%)"></div>
+  <div id="flash" class="ov"></div>
+  <div id="dip" class="ov"></div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
